@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BasicWeapon : MonoBehaviour {
 
-	//[System.Serializable]
+	[System.Serializable]
 	public struct Weapons{
 		public string weaponsName;
 		public float weaponsDamage;
@@ -23,10 +23,15 @@ public class BasicWeapon : MonoBehaviour {
     float shootCooldown;
     GameObject currentTarget;
     RaycastHit hit;
-    BasicAI target;
+    HealthScript target;
+     
     
 
 	void Start () {
+        //weapons[0].weaponsName = "HEY";
+        //weapons[1].weaponsName = "HEY";
+
+       // Debug.Log(weapons[0].weaponsName);
 	}
 	
 	// Update is called once per frame
@@ -35,19 +40,21 @@ public class BasicWeapon : MonoBehaviour {
         {
             if (shootCooldown <= Time.time)
             {
-                // Debug.Log("WORKING");
+                //Debug.Log("WORKING");
+                Vector3 weaponSprayed;
+                weaponSprayed = transform.TransformDirection(0, 0, 50) + WeaponSpray(sprayValue);
                 shootCooldown += shootInterval;
-                //Debug.DrawRay(transform.position, transform.TransformDirection(0, 0, 50) + WeaponSpray(sprayValue), Color.black, 2f);
-                if (Physics.Raycast(transform.position, transform.TransformDirection(0, 0, 50) + WeaponSpray(sprayValue), out hit))
+                Debug.DrawRay(transform.position, weaponSprayed, Color.red, 0.25f);
+                if (Physics.Raycast(transform.position,weaponSprayed, out hit))
                 {
                     // Debug.Log("HITTING");
                     Instantiate(explosionEffect, hit.point, Quaternion.identity);
                     if (currentTarget != hit.transform.gameObject)
                     {
-                        if (hit.transform.gameObject.GetComponent<BasicAI>())
+                        if (hit.transform.gameObject.GetComponent<HealthScript>())
                         {
                             currentTarget = hit.transform.gameObject;
-                            target = hit.transform.gameObject.GetComponent<BasicAI>();
+                            target = hit.transform.gameObject.GetComponent<HealthScript>();
                             //Debug.Log("Game Object has AI Script");
                         }
                         else

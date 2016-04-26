@@ -6,14 +6,23 @@ public class BasicEnemySpawner : MonoBehaviour {
     public Transform player;
     public GameObject enemy;
     public float spawnArea;
+
+    float spawnTimer;
+    public float spawnCooldown;
 	// Use this for initialization
 	void Start () {
+
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Instantiate(enemy, SpawnEnemy(player.position), Quaternion.identity);
+        if (spawnTimer <= Time.time){
+            spawnTimer = Time.time;
+            spawnTimer += spawnCooldown;
+            Instantiate(enemy, SpawnEnemy(player.position), Quaternion.identity);
+        }
+        
 	
 	}
 
