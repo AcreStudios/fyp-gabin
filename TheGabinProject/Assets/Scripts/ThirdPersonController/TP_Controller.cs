@@ -38,6 +38,7 @@ public class TP_Controller : MonoBehaviour
 	{
 		float deadZone = 0.1f;
 
+		TP_Movement.instance.verticalVelocity = TP_Movement.instance.moveVector.y;
 		TP_Movement.instance.moveVector = Vector3.zero;
 
 		if(Input.GetAxis(verticalAxis) > deadZone || Input.GetAxis(verticalAxis) < -deadZone)

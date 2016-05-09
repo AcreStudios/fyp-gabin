@@ -140,11 +140,11 @@ public class TP_Camera : MonoBehaviour
 		tempCamera.AddComponent<TP_Camera>();
 		myCamera = tempCamera.GetComponent<TP_Camera>();
 
-		tempTargetLookAt = GameObject.Find("Target LookAt").gameObject;
+		tempTargetLookAt = GameObject.Find("Target Look At").gameObject;
 
 		if(tempTargetLookAt == null)
 		{
-			tempTargetLookAt = new GameObject("Target LookAt");
+			tempTargetLookAt = new GameObject("Target Look At");
 			tempTargetLookAt.transform.position = Vector3.zero;
 		}
 

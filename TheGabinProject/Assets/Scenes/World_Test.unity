@@ -7642,7 +7642,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1625591111}
-  m_LocalRotation: {x: 0, y: -0.24665684, z: 0, w: 0.96910286}
+  m_LocalRotation: {x: 0, y: -0.24665685, z: 0, w: 0.9691029}
   m_LocalPosition: {x: -2.73, y: 0.81, z: 32.24}
   m_LocalScale: {x: 3, y: 1.5, z: 6}
   m_Children: []
@@ -8014,6 +8014,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1736486003}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1756598038 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 127368, guid: 8d228b2570743b941b45961068805ad2, type: 2}
+  m_PrefabInternal: {fileID: 1037429342}
+--- !u!114 &1756598042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1756598038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 049391134a3da774a88744ca53a4b01b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprayValue: 5
+  shootInterval: 1
+  weaponDamage: 1
+  explosionEffect: {fileID: 177928, guid: 00670fed9e70f9643bb811d4810386f1, type: 2}
 --- !u!1001 &1758267134
 Prefab:
   m_ObjectHideFlags: 0
