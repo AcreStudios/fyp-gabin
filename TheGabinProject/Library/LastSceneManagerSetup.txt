@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/World_Test.unity
+- path: Assets/Scenes/ThirdPersonControllerTest.unity
   isLoaded: 1
   isActive: 1

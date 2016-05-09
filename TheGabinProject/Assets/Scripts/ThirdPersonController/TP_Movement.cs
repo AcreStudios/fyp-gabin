@@ -5,6 +5,8 @@ public class TP_Movement : MonoBehaviour
 {
 	#region Declare variables
 	public float moveSpeed = 10f;
+	public float jumpSpeed = 6f;
+
 	public float gravity = 21f; // Fall acceleration
 	public float terminalVelocity = 20f; // Max falling speed
 
@@ -62,6 +64,12 @@ public class TP_Movement : MonoBehaviour
 
 		if(TP_Controller.characterController.isGrounded && moveVector.y < -1)
 			moveVector = new Vector3(moveVector.x, -1, moveVector.z);
+	}
+
+	public void Jump()
+	{
+		if(TP_Controller.characterController.isGrounded)
+			verticalVelocity = jumpSpeed;
 	}
 
 	void SnapAlignCharacterWithCamera()

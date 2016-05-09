@@ -7,6 +7,7 @@ public class TP_Controller : MonoBehaviour
 	// String for input axes
 	public string horizontalAxis = "Horizontal";
 	public string verticalAxis = "Vertical";
+	public string jumpButton = "Jump";
 	#endregion
 
 	#region Cache components
@@ -30,6 +31,7 @@ public class TP_Controller : MonoBehaviour
 			return;
 
 		GetLocomotionInput();
+		HandleActionInput();
 
 		TP_Movement.instance.MovementUpdate();
 	}
@@ -46,5 +48,16 @@ public class TP_Controller : MonoBehaviour
 
 		if(Input.GetAxis(horizontalAxis) > deadZone || Input.GetAxis(horizontalAxis) < -deadZone)
 			TP_Movement.instance.moveVector += new Vector3(Input.GetAxis(horizontalAxis), 0, 0);
+	}
+
+	void HandleActionInput()
+	{
+		if(Input.GetButton(jumpButton))
+			DoJump();
+	}
+
+	void DoJump()
+	{
+		TP_Movement.instance.Jump();
 	}
 }
