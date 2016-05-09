@@ -3,33 +3,27 @@ using System.Collections;
 
 public class BasicWeapon : MonoBehaviour {
 
-	//[System.Serializable]
-	public struct Weapons{
-		public string weaponsName;
-		public float weaponsDamage;
-		public float weaponsAttackSpeed;
-		public float weaponsSpray;
-		public bool projectile;
-	}
-
-	public Weapons[] weapons;
-
-    public float sprayValue;
-    
+    public enum BulletTypes {
+        Frozen, Fire, Shock, Normal
+    }
+   
+    public float sprayValue;  
     public float shootInterval;
     public float weaponDamage;
     public GameObject explosionEffect;
+    public BulletTypes bulletType;
 
     float shootCooldown;
     GameObject currentTarget;
     RaycastHit hit;
     BaseClass target;
     
+    
 
 	void Start () {
+        //bulletType = BulletTypes.Normal;
 	}
 	
-	// Update is called once per frame
 	void Update () {
         if (Input.GetMouseButton(0))
         {
@@ -56,6 +50,19 @@ public class BasicWeapon : MonoBehaviour {
                     if (currentTarget != null)
                     {
                         target.DamageRecieved(weaponDamage, hit.transform.gameObject);
+
+                        switch (bulletType)
+                        {
+                            case BulletTypes.Frozen:
+                                target.Frozen();
+                                break;
+                            case BulletTypes.Fire:
+                                target.Fire();
+                                break;
+                            case BulletTypes.Shock:
+                                target.Shock();
+                                break;
+                        }
                     }
                 }
             }

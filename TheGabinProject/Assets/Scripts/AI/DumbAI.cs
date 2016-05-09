@@ -1,69 +1,45 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DumbAI : BasicAI {
+public class DumbAI : AIBase {
 
     public enum States {
-        Movement, Reload, Shooting
+        Movement, Attacking
     }
 
     public States currentBehaviour;
     public float damage;
-    public float speed;
-    public Transform player;
 
-    public int ammoCount;
-    public float timer;
-    public bool reloadedYet;
-	// Use this for initialization
-	void Start () {
-	}
-	
+    void Start() {
+    }
+
     void Update() {
-
-        if (ammoCount > 0){
-            if ((player.position - transform.position).magnitude < 1)
-            {
-                currentBehaviour = States.Shooting;
-            }
-            else
-            {
-                currentBehaviour = States.Movement;
-            }
-        }
-
-        else{
-            currentBehaviour = States.Reload;
-        }
 
         switch (currentBehaviour)
         {
             case States.Movement:
-                Movement(player.position, speed);
-                break;
-
-            case States.Reload:
-                if (!reloadedYet) {
-                    timer = Time.time + 1.0f;
-                    reloadedYet = true;
-                }
-                Movement(player.position, -speed);
-
-                if (timer < Time.time) {
-                    ammoCount = 20;
-                    reloadedYet = false;
+                Movement(target.position, speed);
+                if ((target.position - transform.position).magnitude < 30){
+                    currentBehaviour = States.Attacking;
                 }
                 break;
 
-            case States.Shooting:
-                if (timer < Time.time)
+            case States.Attacking:
+                if (Combat())
                 {
-                    transform.LookAt(player);
-                    Shooting(1);
-                    ammoCount--;
-                    timer = Time.time + 0.1f;
+                    //Debug.Log("Firing");
+                    if ((target.position - transform.position).magnitude > 30)
+                    {
+                        currentBehaviour = States.Movement;
+                    }
+                }
+                else
+                {
+                   //Debug.Log("Reloading");
+                    Movement(target.position, -speed);
                 }
                 break;
+
         }
     }
 
