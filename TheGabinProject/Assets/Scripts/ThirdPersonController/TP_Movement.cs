@@ -4,7 +4,7 @@ using System.Collections;
 public class TP_Movement : MonoBehaviour
 {
 	#region Declare variables
-	public float moveSpeed = 10f;
+	public float moveSpeed = 5f;
 	public float jumpSpeed = 6f;
 
 	public float gravity = 21f; // Fall acceleration
@@ -74,7 +74,7 @@ public class TP_Movement : MonoBehaviour
 
 	void SnapAlignCharacterWithCamera()
 	{
-		if(moveVector.x != 0 || moveVector.z != 0)
+		if(moveVector.x != 0 || moveVector.z != 0 || TP_Camera.instance.shootingMode)
 		{
 			trans.rotation = Quaternion.Euler(trans.eulerAngles.x, Camera.main.transform.eulerAngles.y, trans.eulerAngles.z);
 		}

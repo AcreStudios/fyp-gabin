@@ -5,10 +5,13 @@ public class TP_Camera : MonoBehaviour
 {
 	#region Declare variables
 	// Target to look at
-	public Transform targetLookAt;
+	Transform targetLookAt;
+	public Transform normalLookAt;
+	public Transform aimingLookAt;
 
 	// Mouse, sensitivity and limits
 	public string horizontalAxis = "Mouse X", verticalAxis = "Mouse Y", zoomAxis = "Mouse ScrollWheel";
+	public KeyCode shootingModeButton;
 	public bool invertY = false;
 	public float sensitivityX = 2f, sensitivityY = 1f, sensitivityZoom = 5f;
 	public float minLimitY = -40f, maxLimitY = 80f;
@@ -29,6 +32,13 @@ public class TP_Camera : MonoBehaviour
 
 	Vector3 currentPosition = Vector3.zero;
 	Vector3 desiredPosition = Vector3.zero;
+
+	[Header("Shooting Mode")]
+	public bool shootingMode;
+	public float shootingDistance = 2f;
+
+	[Header("Cursor")]
+	public CursorLockMode cursorMode;
 	#endregion
 
 	#region Cache components
@@ -43,6 +53,9 @@ public class TP_Camera : MonoBehaviour
 		instance = this;
 
 		trans = GetComponent<Transform>();
+
+		// Lock screen cursor
+		Cursor.lockState = cursorMode;
 	}
 
 	// Use this for initialization
@@ -62,6 +75,10 @@ public class TP_Camera : MonoBehaviour
 		HandlePlayerInput();
 		CalculateDesiredPosition();
 		PositionUpdate();
+
+		// For shooting mode (camera zoom in)
+		shootingMode = Input.GetKey(shootingModeButton);
+		targetLookAt = (shootingMode) ? aimingLookAt : normalLookAt;
 	}
 
 	void HandlePlayerInput()
@@ -94,7 +111,7 @@ public class TP_Camera : MonoBehaviour
 
 	Vector3 CalculatePosition(float rotationX, float rotationY, float distance)
 	{
-		Vector3 direction = new Vector3(0f, 0f, -distance);
+		Vector3 direction = (shootingMode) ? new Vector3(0f, 0f, -shootingDistance) : new Vector3(0f, 0f, -distance);
 		Quaternion rotation = Quaternion.Euler(rotationX, rotationY, 0f);
 
 		return targetLookAt.position + rotation * direction;
@@ -135,16 +152,17 @@ public class TP_Camera : MonoBehaviour
 			tempCamera = new GameObject("Main Camera");
 			tempCamera.AddComponent<Camera>();
 			tempCamera.tag = "MainCamera";
+
+			tempCamera.AddComponent<TP_Camera>();
 		}
 
-		tempCamera.AddComponent<TP_Camera>();
 		myCamera = tempCamera.GetComponent<TP_Camera>();
 
-		tempTargetLookAt = GameObject.Find("Target Look At").gameObject;
+		tempTargetLookAt = GameObject.Find("Normal Look At").gameObject;
 
 		if(tempTargetLookAt == null)
 		{
-			tempTargetLookAt = new GameObject("Target Look At");
+			tempTargetLookAt = new GameObject("Normal Look At");
 			tempTargetLookAt.transform.position = Vector3.zero;
 		}
 

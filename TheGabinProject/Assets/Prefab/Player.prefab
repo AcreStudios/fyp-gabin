@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &117978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 401472}
+  m_Layer: 0
+  m_Name: Normal Look At
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &123620
 GameObject:
   m_ObjectHideFlags: 1
@@ -44,7 +59,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 434272}
   m_Layer: 0
-  m_Name: Target Look At
+  m_Name: Aiming Look At
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,6 +82,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &401472
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 460870}
+  m_RootOrder: 0
 --- !u!4 &434272
 Transform:
   m_ObjectHideFlags: 1
@@ -74,11 +101,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 460870}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &446430
 Transform:
   m_ObjectHideFlags: 1
@@ -91,7 +118,7 @@ Transform:
   m_Children:
   - {fileID: 485174}
   m_Father: {fileID: 460870}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &460870
 Transform:
   m_ObjectHideFlags: 1
@@ -102,6 +129,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 401472}
   - {fileID: 434272}
   - {fileID: 446430}
   m_Father: {fileID: 0}
@@ -195,7 +223,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e154460a41081e24f8f524c586648e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 5
+  jumpSpeed: 6
+  gravity: 21
+  terminalVelocity: 20
 --- !u!114 &11490560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalAxis: Horizontal
   verticalAxis: Vertical
+  jumpButton: Jump
 --- !u!143 &14335694
 CharacterController:
   m_ObjectHideFlags: 1

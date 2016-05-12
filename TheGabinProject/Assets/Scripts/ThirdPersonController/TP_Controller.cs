@@ -21,6 +21,7 @@ public class TP_Controller : MonoBehaviour
 		characterController = GetComponent<CharacterController>();
 		instance = this;
 
+		// Using the old camera system
 		TP_Camera.UseExistingOrCreateNewMainCamera();
 	}
 

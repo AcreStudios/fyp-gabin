@@ -160,6 +160,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!4 &721540744 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 434272, guid: 8d228b2570743b941b45961068805ad2, type: 2}
+  m_PrefabInternal: {fileID: 1515164188}
 --- !u!1 &1114368954
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +246,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1114368954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -258,22 +262,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adbb0be5a3b0b444990becc2b9d0e603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLookAt: {fileID: 0}
-  horizontalAxis: Mouse X
-  verticalAxis: Mouse Y
+  normalLookAt: {fileID: 1470326186}
+  aimingLookAt: {fileID: 721540744}
+  horizontalAxis: CameraH
+  verticalAxis: CameraV
   zoomAxis: Mouse ScrollWheel
+  shootingModeButton: 306
   invertY: 0
   sensitivityX: 2
   sensitivityY: 1
   sensitivityZoom: 5
-  minLimitY: -40
-  maxLimitY: 80
-  distance: 0
+  minLimitY: -20
+  maxLimitY: 60
+  distance: 5
   distanceMin: 3
   distanceMax: 10
   distanceSmoothTime: 0.05
-  smoothX: 0.05
-  smoothY: 0.1
+  smoothX: 0.1
+  smoothY: 0.2
+  shootingMode: 0
+  shootingDistance: 2
+  cursorMode: 1
+--- !u!4 &1470326186 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 401472, guid: 8d228b2570743b941b45961068805ad2, type: 2}
+  m_PrefabInternal: {fileID: 1515164188}
 --- !u!1001 &1515164188
 Prefab:
   m_ObjectHideFlags: 0
@@ -313,9 +326,29 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 11421362, guid: 8d228b2570743b941b45961068805ad2, type: 2}
-      propertyPath: jumpSpeed
-      value: 6
+    - target: {fileID: 401472, guid: 8d228b2570743b941b45961068805ad2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 434272, guid: 8d228b2570743b941b45961068805ad2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 401472, guid: 8d228b2570743b941b45961068805ad2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 434272, guid: 8d228b2570743b941b45961068805ad2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11490560, guid: 8d228b2570743b941b45961068805ad2, type: 2}
+      propertyPath: horizontalAxis
+      value: PlayerH
+      objectReference: {fileID: 0}
+    - target: {fileID: 11490560, guid: 8d228b2570743b941b45961068805ad2, type: 2}
+      propertyPath: verticalAxis
+      value: PlayerV
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d228b2570743b941b45961068805ad2, type: 2}
