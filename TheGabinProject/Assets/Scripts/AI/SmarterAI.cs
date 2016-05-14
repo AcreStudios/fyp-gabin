@@ -8,7 +8,7 @@ public class SmarterAI : AIBase {
     }
 
     float cTimer;
-    protected States currentBehaviour;
+    public States currentBehaviour;
 
     protected GameObject storage;
     protected GameObject[] obs;
@@ -16,7 +16,7 @@ public class SmarterAI : AIBase {
     public float crouchTime;
 
     void Start() {
-        //useNavMesh = true;
+        useNavMesh = true;
         currentBehaviour = States.Scouting;
         obs = GameObject.FindGameObjectsWithTag("Obs");
         DamageRecieved(0, gameObject);
@@ -28,7 +28,8 @@ public class SmarterAI : AIBase {
         switch (currentBehaviour) {
             case States.Movement:
                 Movement(targetPoint, speed);
-                if ((targetPoint - transform.position).sqrMagnitude < 5) {
+                //if ((targetPoint - transform.position).sqrMagnitude < 5) {
+                if (agent.velocity == Vector3.zero) { 
                     currentBehaviour = States.Camping;
                 }
                 break;
@@ -48,15 +49,18 @@ public class SmarterAI : AIBase {
                 if (cTimer < Time.time) {
                     if (Combat()) {
                         transform.position = new Vector3(transform.position.x, 2.5f, transform.position.z);
+                        transform.localScale = new Vector3(5, 5, 5);
 
-                        if ((target.position - transform.position).magnitude > 60) {
+                        if ((target.position - transform.position).magnitude > 70) {
                             currentBehaviour = States.Scouting;
+                            Debug.Log("Changing");
                         }
                     } else {
                         transform.position = new Vector3(transform.position.x, 1.25f, transform.position.z);
                         transform.localScale = new Vector3(5, 2.5f, 5);
                     }
                 } else {
+                    transform.position = new Vector3(transform.position.x, 1.25f, transform.position.z);
                     transform.localScale = new Vector3(5, 2.5f, 5);
                 }
 

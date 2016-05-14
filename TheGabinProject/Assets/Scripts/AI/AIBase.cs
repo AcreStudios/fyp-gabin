@@ -32,13 +32,11 @@ public class AIBase : BaseClass {
 
     public void Movement(Vector3 value, float speed) {
         if (useNavMesh) {
-            if (speed > 0) {
-                agent.speed = speed;
-                agent.acceleration = speed;
-                agent.destination = value;
-                agent.angularSpeed = 360;
-                //Debug.Log("Movement is true");
-            }
+            agent.speed = speed*20;
+            agent.acceleration = speed*20;
+            agent.destination = value;
+            agent.angularSpeed = 360;
+
         } else
             transform.position = Vector3.MoveTowards(transform.position, value, speed);
 
@@ -91,7 +89,7 @@ public class AIBase : BaseClass {
             return true;
         } else {
             if (!reloading) {
-                timer = Time.time + 1.0f;
+                timer = Time.time + 3.0f;
                 reloading = true;
             }
             if (timer < Time.time) {

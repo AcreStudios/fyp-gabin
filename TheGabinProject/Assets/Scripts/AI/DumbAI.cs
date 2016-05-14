@@ -13,9 +13,8 @@ public class DumbAI : AIBase {
     protected Vector3 targetPoint;
 
     void Start() {
-        //useNavMesh = true;
+        useNavMesh = true;
         obs = GameObject.FindGameObjectsWithTag("Obs");
-        //DamageRecieved(0, gameObject);
         base.Start();
         storage = null;
     }
@@ -39,6 +38,9 @@ public class DumbAI : AIBase {
                 if (Combat()) {
                     if ((target.position - transform.position).magnitude > 60) {
                         currentBehaviour = States.Movement;
+                    } 
+                    else {
+                        agent.speed = 0;
                     }
                 } else {
                     if (storage == null) {

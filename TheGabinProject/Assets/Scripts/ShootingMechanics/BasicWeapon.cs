@@ -48,7 +48,7 @@ public class BasicWeapon : MonoBehaviour {
                         }
                     }
                     if (currentTarget != null) {
-                        Debug.Log("Hitting");
+                        //Debug.Log("Hitting");
                         target.DamageRecieved(weaponDamage, hit.transform.gameObject);
 
                         switch (bulletType) {
