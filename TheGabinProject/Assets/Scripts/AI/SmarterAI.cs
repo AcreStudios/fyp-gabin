@@ -7,70 +7,76 @@ public class SmarterAI : AIBase {
         Movement, Reload, Shooting, Scouting, Camping
     }
 
-    public States currentBehaviour;
-    public float damage;
+    float cTimer;
+    protected States currentBehaviour;
 
-    public GameObject storage;
-    public GameObject[] obs;
-    // Use this for initialization
+    protected GameObject storage;
+    protected GameObject[] obs;
+    protected Vector3 targetPoint;
+    public float crouchTime;
+
     void Start() {
+        //useNavMesh = true;
         currentBehaviour = States.Scouting;
         obs = GameObject.FindGameObjectsWithTag("Obs");
+        DamageRecieved(0, gameObject);
+        base.Start();
     }
 
     void Update() {
 
-        if (storage != null)
-        {
-            Debug.DrawLine(transform.position, storage.transform.position, Color.red);
-        }
-
-        switch (currentBehaviour)
-        {
+        switch (currentBehaviour) {
             case States.Movement:
-                Movement(storage.transform.position, speed);
-                if (transform.position == storage.transform.position)
-                {
+                Movement(targetPoint, speed);
+                if ((targetPoint - transform.position).sqrMagnitude < 5) {
                     currentBehaviour = States.Camping;
                 }
                 break;
 
             case States.Camping:
-
-                if (Combat()){
-                    transform.position = new Vector3(transform.position.x, 2.5f, transform.position.z);
-                    transform.localScale = new Vector3(5, 5, 5);
-
-                    if ((target.position - transform.position).magnitude > 40)
-                    {
+                if (Physics.Linecast(new Vector3(transform.position.x, 0.1f, transform.position.z), target.transform.position, out hit)) {
+                    if (hit.transform == target) {
                         currentBehaviour = States.Scouting;
                     }
                 }
-                else{
-                    transform.position = new Vector3(transform.position.x, 1.25f, transform.position.z);
+
+                if (shotAt) {
+                    cTimer = Time.time + crouchTime;
+                    shotAt = false;
+                }
+
+                if (cTimer < Time.time) {
+                    if (Combat()) {
+                        transform.position = new Vector3(transform.position.x, 2.5f, transform.position.z);
+
+                        if ((target.position - transform.position).magnitude > 60) {
+                            currentBehaviour = States.Scouting;
+                        }
+                    } else {
+                        transform.position = new Vector3(transform.position.x, 1.25f, transform.position.z);
+                        transform.localScale = new Vector3(5, 2.5f, 5);
+                    }
+                } else {
                     transform.localScale = new Vector3(5, 2.5f, 5);
                 }
+
                 break;
 
             case States.Scouting:
-               // Debug.Log("Scouting!");
                 float distStorage;
                 distStorage = Mathf.Infinity;
-                foreach (GameObject obstacles in obs)
-                {
+                foreach (GameObject obstacles in obs) {
 
                     float currentDist = (target.position - obstacles.transform.position).sqrMagnitude;
 
-                    if (currentDist < distStorage)
-                    {
+                    if (currentDist < distStorage) {
                         distStorage = currentDist;
                         storage = obstacles;
                     }
                 }
+                targetPoint = FurthestPoint(storage);
                 currentBehaviour = States.Movement;
                 break;
-
         }
     }
-
 }

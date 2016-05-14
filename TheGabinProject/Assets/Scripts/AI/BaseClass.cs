@@ -7,41 +7,50 @@ public class BaseClass : MonoBehaviour {
     public GameObject criticalPart;
     public float speed;
     public float speedA;
+    protected bool shotAt;
+    public bool destrutibles;
 
-    void Start() {
+    public float Health {
+        get {
+            return this.health;
+        }
+        set {
+            if (value <= 0) {
+                if (destrutibles) {
+                    transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2, transform.localScale.z);
+                    Destroy(this);
+                } else {
+                    Destroy(gameObject);
+                }
+            } else {
+                health = value;
+            }
+        }
     }
 
     public void DamageRecieved(float weaponDamage, GameObject partHit) {
-        //Debug.Log(partHit);
+
         if (criticalPart == partHit) {
             Destroy(gameObject);
         }
-
-        health -= weaponDamage;
-
-        if (health <= 0){
-            Destroy(gameObject);
-        }
+        shotAt = true;
+        Health -= weaponDamage;
     }
 
     public void Frozen() {
         speed /= 2;
-        GetComponent<Renderer> ().material.color = Color.blue;
-
+        GetComponent<Renderer>().material.color = Color.blue;
         StartCoroutine(Restoration(2));
     }
 
     public void Fire() {
-        health -= 25;
+        Health -= 25;
         GetComponent<Renderer>().material.color = Color.red;
-
-        StartCoroutine(Restoration(3));
     }
 
     public void Shock() {
         speed = 0;
         GetComponent<Renderer>().material.color = Color.yellow;
-
         StartCoroutine(Restoration(0.5f));
     }
 
@@ -50,6 +59,4 @@ public class BaseClass : MonoBehaviour {
         speed = speedA;
         GetComponent<Renderer>().material.color = Color.white;
     }
-
-
 }
