@@ -19,17 +19,20 @@ public class AIBase : BaseClass {
 
     public GameObject explosionEffect;
 
+    Transform head;
     protected bool useNavMesh;
     protected NavMeshAgent agent;
     Vector3 finalDestination;
     GameObject toReturn;
 
     public void Start() {
-        //Debug.Log(useNavMesh);
         agent = GetComponent<NavMeshAgent>();
         if (!useNavMesh) {
             agent.enabled = false;
         }
+
+        head = transform.Find("Head");
+        criticalPart = head.gameObject;
     }
 
     public void Movement(Vector3 value, float speed) {
@@ -49,9 +52,9 @@ public class AIBase : BaseClass {
         Vector3 storage;
 
         storage = WeaponSpray(sprayValue);
-        Debug.DrawRay(transform.position + new Vector3(0, transform.localScale.y / 10, 0), transform.TransformDirection(0, 0, range) + storage, Color.black, 2f);
+        Debug.DrawRay(transform.position + new Vector3(0, transform.localScale.y/4, 0), head.TransformDirection(0, 0, range) + storage, Color.black, 2f);
 
-        if (Physics.Raycast(transform.position + new Vector3(0, transform.localScale.y / 10, 0), transform.TransformDirection(0, 0, range) + storage, out hit)) {
+        if (Physics.Raycast(transform.position + new Vector3(0, transform.localScale.y/4, 0), head.TransformDirection(0, 0, range) + storage, out hit)) {
             if (currentTarget != null) {
                 if (!currentTarget.GetComponent<BaseClass>()) {
                     currentTarget = null;
@@ -83,7 +86,7 @@ public class AIBase : BaseClass {
 
         if (ammoCount > 0) {
             if (timer < Time.time) {
-                transform.LookAt(target);
+                head.LookAt(target);
                 Shooting();
                 ammoCount--;
                 timer = Time.time + 0.1f;

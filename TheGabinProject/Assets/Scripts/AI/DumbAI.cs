@@ -15,8 +15,9 @@ public class DumbAI : AIBase {
     void Start() {
         useNavMesh = true;
         obs = GameObject.FindGameObjectsWithTag("Obs");
-        base.Start();
         storage = null;
+
+        base.Start();
     }
 
     void Update() {
@@ -38,10 +39,12 @@ public class DumbAI : AIBase {
                 if (Combat()) {
                     if ((target.position - transform.position).magnitude > range) {
                         currentBehaviour = States.Movement;
+                        transform.localScale = new Vector3(transform.localScale.x, 2, transform.localScale.z);
                     } 
                     else {
                         agent.speed = 0;
                         storage = null;
+                        transform.localScale = new Vector3(transform.localScale.x, 2, transform.localScale.z);
                     }
                 } else {
                     
@@ -52,7 +55,7 @@ public class DumbAI : AIBase {
                         }
                     } else {
                         Movement(targetPoint, speed);
-                        storage.GetComponent<Renderer>().material.color = Color.red;
+                        transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
                     }
                     
                 }

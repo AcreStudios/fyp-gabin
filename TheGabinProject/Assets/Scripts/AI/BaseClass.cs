@@ -4,11 +4,12 @@ using System.Collections;
 public class BaseClass : MonoBehaviour {
 
     public float health;
-    public GameObject criticalPart;
+    protected GameObject criticalPart;
     public float speed;
     public float speedA;
     protected bool shotAt;
     public bool destrutibles;
+    public int ticks;
 
     public float Health {
         get {
@@ -18,6 +19,7 @@ public class BaseClass : MonoBehaviour {
             if (value <= 0) {
                 if (destrutibles) {
                     transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2, transform.localScale.z);
+                    transform.position = new Vector3(transform.position.x, transform.localScale.y / 2, transform.position.z);
                     Destroy(this);
                 } else {
                     Destroy(gameObject);
@@ -44,8 +46,15 @@ public class BaseClass : MonoBehaviour {
     }
 
     public void Fire() {
-        Health -= 25;
-        GetComponent<Renderer>().material.color = Color.red;
+        if (ticks >= 0) {
+            Health -= 1;
+            GetComponent<Renderer>().material.color = Color.red;
+            StartCoroutine(Persistent(0.1f));
+            ticks--;
+        } 
+        else {
+            StartCoroutine(Restoration(0));
+        }
     }
 
     public void Shock() {
@@ -58,5 +67,11 @@ public class BaseClass : MonoBehaviour {
         yield return new WaitForSeconds(statusTime);
         speed = speedA;
         GetComponent<Renderer>().material.color = Color.white;
+        ticks = 20;
+    }
+
+    IEnumerator Persistent(float persistentTime) {
+        yield return new WaitForSeconds(persistentTime);
+        Fire();
     }
 }

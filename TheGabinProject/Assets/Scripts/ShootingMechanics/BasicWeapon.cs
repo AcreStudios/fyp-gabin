@@ -4,7 +4,10 @@ using System.Collections;
 public class BasicWeapon : MonoBehaviour {
 
     public enum BulletTypes {
-        Frozen, Fire, Shock, Normal
+        Frozen,
+        Fire,
+        Shock,
+        Normal
     }
 
     public float sprayValue;
@@ -12,6 +15,7 @@ public class BasicWeapon : MonoBehaviour {
     public float weaponDamage;
     public GameObject explosionEffect;
     public BulletTypes bulletType;
+    int weaponIndex;
 
     float shootCooldown;
     GameObject currentTarget;
@@ -19,18 +23,26 @@ public class BasicWeapon : MonoBehaviour {
     BaseClass target;
 
 
-    void Start() {
-        //bulletType = BulletTypes.Normal;
-
-    }
-
     void Update() {
 
+        if (Input.GetKeyDown("q")) {
+            if (weaponIndex < 3) {
+                weaponIndex++;
+            }
+            bulletType = (BulletTypes)weaponIndex;
+        }
+
+        if (Input.GetKeyDown("e")) {
+            if (weaponIndex > 0) {
+                weaponIndex--;
+            }
+            bulletType = (BulletTypes)weaponIndex;
+        }
+       
         if (Input.GetMouseButton(0)) {
             if (shootCooldown <= Time.time) {
-                // Debug.Log("WORKING");
+
                 shootCooldown = Time.time + shootInterval;
-                //Debug.DrawRay(transform.position, transform.TransformDirection(0, 0, 50) + WeaponSpray(sprayValue), Color.black, 2f);
                 if (Physics.Raycast(transform.position + new Vector3(0, transform.localScale.y / 4, 0), transform.TransformDirection(0, 0, 50) + WeaponSpray(sprayValue), out hit)) {
                     if (currentTarget != null) {
                         if (!currentTarget.GetComponent<BaseClass>()) {
@@ -48,7 +60,7 @@ public class BasicWeapon : MonoBehaviour {
                         }
                     }
                     if (currentTarget != null) {
-                        //Debug.Log("Hitting");
+                        
                         target.DamageRecieved(weaponDamage, hit.transform.gameObject);
 
                         switch (bulletType) {

@@ -19,7 +19,6 @@ public class SmarterAI : AIBase {
         useNavMesh = true;
         currentBehaviour = States.Scouting;
         obs = GameObject.FindGameObjectsWithTag("Obs");
-        DamageRecieved(0, gameObject);
         base.Start();
     }
 
@@ -48,20 +47,18 @@ public class SmarterAI : AIBase {
 
                 if (cTimer < Time.time) {
                     if (Combat()) {
-                        transform.position = new Vector3(transform.position.x, 1.5f, transform.position.z);
-                        transform.localScale = new Vector3(1, 3, 1);
+                        transform.localScale = new Vector3(1, 2, 1);
 
                         if ((target.position - transform.position).magnitude > range) {
                             currentBehaviour = States.Scouting;
                             Debug.Log("Changing");
                         }
                     } else {
-                        transform.position = new Vector3(transform.position.x, 0.75f, transform.position.z);
-                        transform.localScale = new Vector3(1, 1.5f, 1);
+                        transform.localScale = new Vector3(1, 1, 1);
                     }
                 } else {
-                    transform.position = new Vector3(transform.position.x, 0.75f, transform.position.z);
-                    transform.localScale = new Vector3(1, 1.5f, 1);
+
+                    transform.localScale = new Vector3(1, 1, 1);
                 }
 
                 break;
