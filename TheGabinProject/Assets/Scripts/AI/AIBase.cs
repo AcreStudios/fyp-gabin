@@ -49,9 +49,9 @@ public class AIBase : BaseClass {
         Vector3 storage;
 
         storage = WeaponSpray(sprayValue);
-        Debug.DrawRay(transform.position, transform.TransformDirection(0, 0, range) + storage, Color.black, 2f);
+        Debug.DrawRay(transform.position + new Vector3(0, transform.localScale.y / 10, 0), transform.TransformDirection(0, 0, range) + storage, Color.black, 2f);
 
-        if (Physics.Raycast(transform.position + new Vector3(0, transform.localScale.y / 4, 0), transform.TransformDirection(0, 0, range) + storage, out hit)) {
+        if (Physics.Raycast(transform.position + new Vector3(0, transform.localScale.y / 10, 0), transform.TransformDirection(0, 0, range) + storage, out hit)) {
             if (currentTarget != null) {
                 if (!currentTarget.GetComponent<BaseClass>()) {
                     currentTarget = null;
