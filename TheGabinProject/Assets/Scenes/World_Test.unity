@@ -84,7 +84,7 @@ NavMeshSettings:
     minRegionArea: 2
     cellSize: 0.16666667
     manualCellSize: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 4c5dd33ed2b0a3543b931188776fd444, type: 2}
 --- !u!1001 &11922273
 Prefab:
   m_ObjectHideFlags: 0
@@ -123,6 +123,10 @@ Prefab:
     - target: {fileID: 449558, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
@@ -174,6 +178,10 @@ Prefab:
       propertyPath: m_Name
       value: Road_3x20 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
   m_IsPrefabParent: 0
@@ -190,10 +198,10 @@ GameObject:
   - 23: {fileID: 54939153}
   m_Layer: 0
   m_Name: Car (9)
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &54939152
 Transform:
@@ -290,6 +298,10 @@ Prefab:
     - target: {fileID: 495088, guid: d9a70315358ff3444b302f6b6d92b42c, type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 146338, guid: d9a70315358ff3444b302f6b6d92b42c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9a70315358ff3444b302f6b6d92b42c, type: 2}
@@ -455,7 +467,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &98462472
 MeshRenderer:
@@ -891,7 +903,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &198225073
 MeshRenderer:
@@ -1074,6 +1086,10 @@ Prefab:
     - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
       propertyPath: m_Name
       value: Road_3x20 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
@@ -1410,6 +1426,10 @@ Prefab:
       propertyPath: m_Name
       value: Road_3x20 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
   m_IsPrefabParent: 0
@@ -1501,10 +1521,10 @@ GameObject:
   - 23: {fileID: 325413351}
   m_Layer: 0
   m_Name: Car (3)
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &325413351
 MeshRenderer:
@@ -1606,6 +1626,10 @@ Prefab:
       propertyPath: m_Name
       value: Pavement_2x20_LR (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 190536, guid: 2ea83aab8c3998c4aad2eb3f5781999c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ea83aab8c3998c4aad2eb3f5781999c, type: 2}
   m_IsPrefabParent: 0
@@ -1702,6 +1726,10 @@ Prefab:
     - target: {fileID: 146338, guid: d9a70315358ff3444b302f6b6d92b42c, type: 2}
       propertyPath: m_Name
       value: Pavement_2x20_L (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 146338, guid: d9a70315358ff3444b302f6b6d92b42c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9a70315358ff3444b302f6b6d92b42c, type: 2}
@@ -1914,6 +1942,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 190536, guid: 2ea83aab8c3998c4aad2eb3f5781999c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ea83aab8c3998c4aad2eb3f5781999c, type: 2}
   m_IsPrefabParent: 0
@@ -1934,10 +1966,10 @@ GameObject:
   - 23: {fileID: 460487002}
   m_Layer: 0
   m_Name: Car (2)
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &460487002
 MeshRenderer:
@@ -2009,10 +2041,10 @@ GameObject:
   - 23: {fileID: 472249558}
   m_Layer: 0
   m_Name: Car (5)
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &472249558
 MeshRenderer:
@@ -2108,10 +2140,10 @@ GameObject:
   - 23: {fileID: 482309740}
   m_Layer: 0
   m_Name: Car (6)
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &482309739
 Transform:
@@ -2212,6 +2244,10 @@ Prefab:
     - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
       propertyPath: m_Name
       value: Road_3x20 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
@@ -2556,10 +2592,10 @@ GameObject:
   - 23: {fileID: 583814040}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &583814040
 MeshRenderer:
@@ -2735,6 +2771,10 @@ Prefab:
     - target: {fileID: 190536, guid: 2ea83aab8c3998c4aad2eb3f5781999c, type: 2}
       propertyPath: m_Name
       value: Pavement_2x20_LR (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 190536, guid: 2ea83aab8c3998c4aad2eb3f5781999c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ea83aab8c3998c4aad2eb3f5781999c, type: 2}
@@ -2971,6 +3011,10 @@ Prefab:
       propertyPath: m_Name
       value: Road_3x20 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
   m_IsPrefabParent: 0
@@ -3072,6 +3116,10 @@ Prefab:
       propertyPath: m_Name
       value: Road_3x20 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
   m_IsPrefabParent: 0
@@ -3092,10 +3140,10 @@ GameObject:
   - 23: {fileID: 683845055}
   m_Layer: 0
   m_Name: Car (1)
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &683845055
 MeshRenderer:
@@ -3283,6 +3331,10 @@ Prefab:
     - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
       propertyPath: m_Name
       value: Road_3x20 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
@@ -3684,10 +3736,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 852977754}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &853266439 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 460870, guid: 8d228b2570743b941b45961068805ad2, type: 2}
-  m_PrefabInternal: {fileID: 1037429342}
 --- !u!1 &856017635
 GameObject:
   m_ObjectHideFlags: 0
@@ -4105,6 +4153,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 190536, guid: 2ea83aab8c3998c4aad2eb3f5781999c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ea83aab8c3998c4aad2eb3f5781999c, type: 2}
   m_IsPrefabParent: 0
@@ -4150,6 +4202,10 @@ Prefab:
     - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
       propertyPath: m_Name
       value: Road_3x20 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
@@ -4276,6 +4332,10 @@ Prefab:
       propertyPath: m_Name
       value: Pavement_2x20_R (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 110772, guid: 89f4cdfd2ff40e04e9df4ae45e5e7e1a, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89f4cdfd2ff40e04e9df4ae45e5e7e1a, type: 2}
   m_IsPrefabParent: 0
@@ -4366,6 +4426,10 @@ Prefab:
       propertyPath: m_Name
       value: Road_3x20 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
   m_IsPrefabParent: 0
@@ -4389,7 +4453,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1012245641
 MeshRenderer:
@@ -4990,10 +5054,10 @@ GameObject:
   - 23: {fileID: 1137376643}
   m_Layer: 0
   m_Name: Car (7)
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1137376642
 Transform:
@@ -5220,6 +5284,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
   m_IsPrefabParent: 0
@@ -5240,10 +5308,10 @@ GameObject:
   - 23: {fileID: 1160702131}
   m_Layer: 0
   m_Name: Car (11)
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1160702130
 Transform:
@@ -5340,6 +5408,10 @@ Prefab:
     - target: {fileID: 486496, guid: 89f4cdfd2ff40e04e9df4ae45e5e7e1a, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 110772, guid: 89f4cdfd2ff40e04e9df4ae45e5e7e1a, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89f4cdfd2ff40e04e9df4ae45e5e7e1a, type: 2}
@@ -5613,7 +5685,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1272474974
 MeshRenderer:
@@ -5715,6 +5787,10 @@ Prefab:
       propertyPath: m_Name
       value: Road_3x20 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
   m_IsPrefabParent: 0
@@ -5764,6 +5840,10 @@ Prefab:
     - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
       propertyPath: m_Name
       value: Road_3x20 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
@@ -5849,6 +5929,10 @@ Prefab:
     - target: {fileID: 146338, guid: d9a70315358ff3444b302f6b6d92b42c, type: 2}
       propertyPath: m_Name
       value: Pavement_2x20_L (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 146338, guid: d9a70315358ff3444b302f6b6d92b42c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9a70315358ff3444b302f6b6d92b42c, type: 2}
@@ -6277,7 +6361,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1422612890
 MeshRenderer:
@@ -6379,6 +6463,10 @@ Prefab:
       propertyPath: m_Name
       value: Road_3x20 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
   m_IsPrefabParent: 0
@@ -6402,7 +6490,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1426678224
 MeshRenderer:
@@ -6591,7 +6679,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1442019175
 MeshRenderer:
@@ -7084,10 +7172,10 @@ GameObject:
   - 23: {fileID: 1526341599}
   m_Layer: 0
   m_Name: Car (4)
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1526341599
 MeshRenderer:
@@ -7279,6 +7367,10 @@ Prefab:
     - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
       propertyPath: m_Name
       value: Road_3x20 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
@@ -7479,6 +7571,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 146338, guid: d9a70315358ff3444b302f6b6d92b42c, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9a70315358ff3444b302f6b6d92b42c, type: 2}
   m_IsPrefabParent: 0
@@ -7631,10 +7727,10 @@ GameObject:
   - 23: {fileID: 1625591113}
   m_Layer: 0
   m_Name: Car (12)
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1625591112
 Transform:
@@ -7704,7 +7800,8 @@ GameObject:
   - 33: {fileID: 1643019171}
   - 65: {fileID: 1643019170}
   - 23: {fileID: 1643019169}
-  - 114: {fileID: 1643019168}
+  - 195: {fileID: 1643019174}
+  - 114: {fileID: 1643019173}
   m_Layer: 0
   m_Name: EnemyExample
   m_TagString: Untagged
@@ -7712,26 +7809,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1643019168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1643019167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30dde244ee3d9624c8aab403030ebbfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  criticalPart: {fileID: 0}
-  currentBehaviour: 0
-  damage: 0
-  speed: 0.01
-  player: {fileID: 853266439}
-  ammoCount: 0
-  timer: 0
-  reloadedYet: 0
 --- !u!23 &1643019169
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7784,11 +7861,54 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1643019167}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.903, y: 0.84, z: -4.24}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.903, y: 1.68, z: -4.24}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1643019173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1643019167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db3db507187eca408a0befefa54811a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  criticalPart: {fileID: 0}
+  speed: 1
+  speedA: 1
+  destrutibles: 0
+  weaponDamage: 0
+  sprayValue: 2
+  target: {fileID: 1756598043}
+  range: 100
+  explosionEffect: {fileID: 177928, guid: 00670fed9e70f9643bb811d4810386f1, type: 2}
+  currentBehaviour: 0
+  crouchTime: 2
+--- !u!195 &1643019174
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1643019167}
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1661098041
 GameObject:
   m_ObjectHideFlags: 0
@@ -7877,10 +7997,10 @@ GameObject:
   - 23: {fileID: 1717893588}
   m_Layer: 0
   m_Name: Car (8)
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1717893587
 Transform:
@@ -8033,6 +8153,11 @@ MonoBehaviour:
   shootInterval: 1
   weaponDamage: 1
   explosionEffect: {fileID: 177928, guid: 00670fed9e70f9643bb811d4810386f1, type: 2}
+  bulletType: 0
+--- !u!4 &1756598043 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 460870, guid: 8d228b2570743b941b45961068805ad2, type: 2}
+  m_PrefabInternal: {fileID: 1037429342}
 --- !u!1001 &1758267134
 Prefab:
   m_ObjectHideFlags: 0
@@ -8075,6 +8200,10 @@ Prefab:
     - target: {fileID: 110772, guid: 89f4cdfd2ff40e04e9df4ae45e5e7e1a, type: 2}
       propertyPath: m_Name
       value: Pavement_2x20_R (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 110772, guid: 89f4cdfd2ff40e04e9df4ae45e5e7e1a, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89f4cdfd2ff40e04e9df4ae45e5e7e1a, type: 2}
@@ -8203,6 +8332,10 @@ Prefab:
     - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
       propertyPath: m_Name
       value: Road_3x20 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 170056, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f86a9b04fdbbfa46a8834cacb5dc5a8, type: 2}
@@ -8581,6 +8714,10 @@ Prefab:
     - target: {fileID: 486496, guid: 89f4cdfd2ff40e04e9df4ae45e5e7e1a, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 110772, guid: 89f4cdfd2ff40e04e9df4ae45e5e7e1a, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89f4cdfd2ff40e04e9df4ae45e5e7e1a, type: 2}
@@ -9007,7 +9144,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1935308972
 MeshRenderer:
@@ -9427,10 +9564,10 @@ GameObject:
   - 23: {fileID: 2008081915}
   m_Layer: 0
   m_Name: Car (10)
-  m_TagString: Untagged
+  m_TagString: Obs
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2008081914
 Transform:

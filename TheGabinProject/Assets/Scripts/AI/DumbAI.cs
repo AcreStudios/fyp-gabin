@@ -29,14 +29,14 @@ public class DumbAI : AIBase {
 
                 Movement(target.position, speed);
 
-                if ((target.position - transform.position).magnitude < 50) {
+                if ((target.position - transform.position).magnitude < range) {
                     currentBehaviour = States.Attacking;
                 }
                 break;
 
             case States.Attacking:
                 if (Combat()) {
-                    if ((target.position - transform.position).magnitude > 60) {
+                    if ((target.position - transform.position).magnitude > range) {
                         currentBehaviour = States.Movement;
                     } 
                     else {
@@ -44,20 +44,14 @@ public class DumbAI : AIBase {
                     }
                 } else {
                     if (storage == null) {
-                        float distStorage;
-                        distStorage = Mathf.Infinity;
-                        foreach (GameObject obstacles in obs) {
-
-                            float currentDist = (obstacles.transform.position - transform.position).sqrMagnitude;
-
-                            if (currentDist < distStorage) {
-                                distStorage = currentDist;
-                                storage = obstacles;
-                            }
+                        storage = RandomObstacle(obs, transform);
+                        if (storage != null) {
+                            targetPoint = FurthestPoint(storage);
                         }
-                        targetPoint = FurthestPoint(storage);
+                    } else {
+                        Movement(targetPoint, speed);
                     }
-                    Movement(targetPoint, speed);
+                    
                 }
                 break;
 

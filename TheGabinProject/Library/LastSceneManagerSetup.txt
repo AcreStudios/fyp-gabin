@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/AI Importing Test Scene.unity
+- path: Assets/Scenes/World_Test.unity
   isLoaded: 1
   isActive: 1

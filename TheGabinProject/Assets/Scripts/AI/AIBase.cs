@@ -12,6 +12,7 @@ public class AIBase : BaseClass {
     public float weaponDamage;
     public float sprayValue;
     public Transform target;
+    public float range;
 
     protected BaseClass sTarget;
     protected GameObject currentTarget;
@@ -21,6 +22,7 @@ public class AIBase : BaseClass {
     protected bool useNavMesh;
     protected NavMeshAgent agent;
     Vector3 finalDestination;
+    GameObject toReturn;
 
     public void Start() {
         //Debug.Log(useNavMesh);
@@ -47,9 +49,9 @@ public class AIBase : BaseClass {
         Vector3 storage;
 
         storage = WeaponSpray(sprayValue);
-        Debug.DrawRay(transform.position, transform.TransformDirection(0, 0, 50) + storage, Color.black, 2f);
+        Debug.DrawRay(transform.position, transform.TransformDirection(0, 0, range) + storage, Color.black, 2f);
 
-        if (Physics.Raycast(transform.position + new Vector3(0, transform.localScale.y / 4, 0), transform.TransformDirection(0, 0, 50) + storage, out hit)) {
+        if (Physics.Raycast(transform.position + new Vector3(0, transform.localScale.y / 4, 0), transform.TransformDirection(0, 0, range) + storage, out hit)) {
             if (currentTarget != null) {
                 if (!currentTarget.GetComponent<BaseClass>()) {
                     currentTarget = null;
@@ -98,6 +100,23 @@ public class AIBase : BaseClass {
             }
             return false;
         }
+    }
+
+    public GameObject RandomObstacle(GameObject[] obst, Transform reference) {
+
+        toReturn = null;
+
+        foreach (GameObject obstacles in obst) {
+
+            float currentDist = (reference.position - obstacles.transform.position).magnitude;
+            Debug.Log(currentDist);
+            if (currentDist < range) {
+                if (Random.value > 0.5) {
+                    toReturn = obstacles;
+                }
+            }
+        }
+        return toReturn;
     }
 
     public Vector3 FurthestPoint(GameObject obs) {

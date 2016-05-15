@@ -48,38 +48,32 @@ public class SmarterAI : AIBase {
 
                 if (cTimer < Time.time) {
                     if (Combat()) {
-                        transform.position = new Vector3(transform.position.x, 2.5f, transform.position.z);
-                        transform.localScale = new Vector3(5, 5, 5);
+                        transform.position = new Vector3(transform.position.x, 1.5f, transform.position.z);
+                        transform.localScale = new Vector3(1, 3, 1);
 
-                        if ((target.position - transform.position).magnitude > 70) {
+                        if ((target.position - transform.position).magnitude > range) {
                             currentBehaviour = States.Scouting;
                             Debug.Log("Changing");
                         }
                     } else {
-                        transform.position = new Vector3(transform.position.x, 1.25f, transform.position.z);
-                        transform.localScale = new Vector3(5, 2.5f, 5);
+                        transform.position = new Vector3(transform.position.x, 0.75f, transform.position.z);
+                        transform.localScale = new Vector3(1, 1.5f, 1);
                     }
                 } else {
-                    transform.position = new Vector3(transform.position.x, 1.25f, transform.position.z);
-                    transform.localScale = new Vector3(5, 2.5f, 5);
+                    transform.position = new Vector3(transform.position.x, 0.75f, transform.position.z);
+                    transform.localScale = new Vector3(1, 1.5f, 1);
                 }
 
                 break;
 
             case States.Scouting:
-                float distStorage;
-                distStorage = Mathf.Infinity;
-                foreach (GameObject obstacles in obs) {
+                storage = RandomObstacle(obs,target);
+                
 
-                    float currentDist = (target.position - obstacles.transform.position).sqrMagnitude;
-
-                    if (currentDist < distStorage) {
-                        distStorage = currentDist;
-                        storage = obstacles;
-                    }
+                if (storage != null) {
+                    targetPoint = FurthestPoint(storage);
+                    currentBehaviour = States.Movement;
                 }
-                targetPoint = FurthestPoint(storage);
-                currentBehaviour = States.Movement;
                 break;
         }
     }
