@@ -108,10 +108,10 @@ public class AIBase : BaseClass {
 
         foreach (GameObject obstacles in obst) {
 
-            float currentDist = (reference.position - obstacles.transform.position).magnitude;
+            float currentDist = (obstacles.transform.position - reference.position).magnitude;
             Debug.Log(currentDist);
             if (currentDist < range) {
-                if (Random.value > 0.5) {
+                if (Random.value > 0.9) {
                     toReturn = obstacles;
                 }
             }
@@ -119,15 +119,34 @@ public class AIBase : BaseClass {
         return toReturn;
     }
 
+    public GameObject RandomObstacleFromPlayer(GameObject[] obst, Transform reference) {
+
+        toReturn = null;
+
+        foreach (GameObject obstacles in obst) {
+
+            float currentDist = (reference.position - obstacles.transform.position).magnitude;
+            Debug.Log(currentDist);
+            if (currentDist < range) {
+                if (Random.value > 0.9) {
+                    toReturn = obstacles;
+                }
+            }
+        }
+        return toReturn;
+    }
+
+
+
     public Vector3 FurthestPoint(GameObject obs) {
         float distance = 0;
         Vector3[] listOfLocation;
 
         listOfLocation = new Vector3[4];
-        listOfLocation[0] = obs.transform.position - new Vector3(0, 0, obs.GetComponent<BoxCollider>().bounds.extents.z + 5);
-        listOfLocation[1] = obs.transform.position + new Vector3(0, 0, obs.GetComponent<BoxCollider>().bounds.extents.z + 5);
-        listOfLocation[2] = obs.transform.position + new Vector3(obs.GetComponent<BoxCollider>().bounds.extents.x + 5, 0, 0);
-        listOfLocation[3] = obs.transform.position + new Vector3(obs.GetComponent<BoxCollider>().bounds.extents.x + 5, 0, 0);
+        listOfLocation[0] = obs.transform.position - new Vector3(0, 0, obs.GetComponent<BoxCollider>().bounds.extents.z + 0.5f);
+        listOfLocation[1] = obs.transform.position + new Vector3(0, 0, obs.GetComponent<BoxCollider>().bounds.extents.z + 0.5f);
+        listOfLocation[2] = obs.transform.position + new Vector3(obs.GetComponent<BoxCollider>().bounds.extents.x + 0.5f, 0, 0);
+        listOfLocation[3] = obs.transform.position + new Vector3(obs.GetComponent<BoxCollider>().bounds.extents.x + 0.5f, 0, 0);
 
         foreach (Vector3 location in listOfLocation) {
             if ((target.position - location).sqrMagnitude > distance) {

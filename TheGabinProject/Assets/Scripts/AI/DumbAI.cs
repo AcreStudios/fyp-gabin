@@ -41,8 +41,10 @@ public class DumbAI : AIBase {
                     } 
                     else {
                         agent.speed = 0;
+                        storage = null;
                     }
                 } else {
+                    
                     if (storage == null) {
                         storage = RandomObstacle(obs, transform);
                         if (storage != null) {
@@ -50,6 +52,7 @@ public class DumbAI : AIBase {
                         }
                     } else {
                         Movement(targetPoint, speed);
+                        storage.GetComponent<Renderer>().material.color = Color.red;
                     }
                     
                 }

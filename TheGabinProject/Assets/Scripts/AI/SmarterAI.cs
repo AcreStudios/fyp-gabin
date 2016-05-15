@@ -67,7 +67,7 @@ public class SmarterAI : AIBase {
                 break;
 
             case States.Scouting:
-                storage = RandomObstacle(obs,target);
+                storage = RandomObstacleFromPlayer(obs,target);
                 
 
                 if (storage != null) {
