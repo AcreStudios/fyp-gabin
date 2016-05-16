@@ -20,6 +20,8 @@ public class BaseClass : MonoBehaviour {
                 if (destrutibles) {
                     transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y / 2, transform.localScale.z);
                     transform.position = new Vector3(transform.position.x, transform.localScale.y / 2, transform.position.z);
+                    GetComponent<Renderer>().material.color = Color.black;
+                    transform.tag = "Untagged";
                     Destroy(this);
                 } else {
                     Destroy(gameObject);
@@ -40,27 +42,32 @@ public class BaseClass : MonoBehaviour {
     }
 
     public void Frozen() {
-        speed /= 2;
-        GetComponent<Renderer>().material.color = Color.blue;
-        StartCoroutine(Restoration(2));
+        if (!destrutibles) {
+            speed /= 2;
+            GetComponent<Renderer>().material.color = Color.blue;
+            StartCoroutine(Restoration(2));
+        }
     }
 
     public void Fire() {
-        if (ticks >= 0) {
-            Health -= 1;
-            GetComponent<Renderer>().material.color = Color.red;
-            StartCoroutine(Persistent(0.1f));
-            ticks--;
-        } 
-        else {
-            StartCoroutine(Restoration(0));
+        if (!destrutibles) {
+            if (ticks >= 0) {
+                Health -= 1;
+                GetComponent<Renderer>().material.color = Color.red;
+                StartCoroutine(Persistent(0.1f));
+                ticks--;
+            } else {
+                StartCoroutine(Restoration(0));
+            }
         }
     }
 
     public void Shock() {
-        speed = 0;
-        GetComponent<Renderer>().material.color = Color.yellow;
-        StartCoroutine(Restoration(0.5f));
+        if (!destrutibles) {
+            speed = 0;
+            GetComponent<Renderer>().material.color = Color.yellow;
+            StartCoroutine(Restoration(0.5f));
+        }
     }
 
     IEnumerator Restoration(float statusTime) {

@@ -34,8 +34,12 @@ public class SmarterAI : AIBase {
                 break;
 
             case States.Camping:
-                if (Physics.Linecast(new Vector3(transform.position.x, 0.1f, transform.position.z), target.transform.position, out hit)) {
-                    if (hit.transform == target) {
+                if (storage.tag != "Obs") {
+                    currentBehaviour = States.Scouting;
+                }
+                if (Physics.Linecast(new Vector3(transform.position.x, transform.position.y, transform.position.z), target.transform.position, out hit)) {
+                    //Debug.Log(hit.transform.root);
+                    if (hit.transform.root == target.transform) {
                         currentBehaviour = States.Scouting;
                     }
                 }
@@ -57,7 +61,6 @@ public class SmarterAI : AIBase {
                         transform.localScale = new Vector3(1, 1, 1);
                     }
                 } else {
-
                     transform.localScale = new Vector3(1, 1, 1);
                 }
 
@@ -65,8 +68,8 @@ public class SmarterAI : AIBase {
 
             case States.Scouting:
                 storage = RandomObstacleFromPlayer(obs,target);
-                
 
+                //instance = storage.GetComponent<BaseClass>();
                 if (storage != null) {
                     targetPoint = FurthestPoint(storage);
                     currentBehaviour = States.Movement;

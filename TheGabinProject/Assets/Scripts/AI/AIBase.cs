@@ -20,6 +20,8 @@ public class AIBase : BaseClass {
     public GameObject explosionEffect;
 
     Transform head;
+    Transform gun;
+    Transform gunpoint;
     protected bool useNavMesh;
     protected NavMeshAgent agent;
     Vector3 finalDestination;
@@ -32,6 +34,8 @@ public class AIBase : BaseClass {
         }
 
         head = transform.Find("Head");
+        gun = transform.Find("Gun");
+        gunpoint = gun.transform.Find("Gunpoint");
         criticalPart = head.gameObject;
     }
 
@@ -52,9 +56,9 @@ public class AIBase : BaseClass {
         Vector3 storage;
 
         storage = WeaponSpray(sprayValue);
-        Debug.DrawRay(transform.position + new Vector3(0, transform.localScale.y/4, 0), head.TransformDirection(0, 0, range) + storage, Color.black, 2f);
+        Debug.DrawRay(gunpoint.position, gun.TransformDirection(0, 0, range) + storage, Color.black, 2f);
 
-        if (Physics.Raycast(transform.position + new Vector3(0, transform.localScale.y/4, 0), head.TransformDirection(0, 0, range) + storage, out hit)) {
+        if (Physics.Raycast(gunpoint.position, gun.TransformDirection(0, 0, range) + storage, out hit)) {
             if (currentTarget != null) {
                 if (!currentTarget.GetComponent<BaseClass>()) {
                     currentTarget = null;
@@ -63,7 +67,7 @@ public class AIBase : BaseClass {
 
             Instantiate(explosionEffect, hit.point, Quaternion.identity);
 
-            if (currentTarget != hit.transform.gameObject) {
+            if (currentTarget != hit.transform.gameObject && hit.transform.root != transform) {
                 if (hit.transform.root.gameObject.GetComponent<BaseClass>()) {
                     currentTarget = hit.transform.gameObject;
                     sTarget = hit.transform.root.gameObject.GetComponent<BaseClass>();
@@ -79,14 +83,16 @@ public class AIBase : BaseClass {
 
     public Vector3 WeaponSpray(float value) {
 
-        return new Vector3(Random.Range(-value, value), Random.Range(-value, value), Random.Range(-value, value));
+        return new Vector3(Random.Range(-value, value), Random.Range(-value, value), 0);
     }
 
     public bool Combat() {
 
         if (ammoCount > 0) {
             if (timer < Time.time) {
-                head.LookAt(target);
+                transform.LookAt(target.Find("Model_Player"));
+                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);
+                gun.LookAt(target.Find("Model_Player"));
                 Shooting();
                 ammoCount--;
                 timer = Time.time + 0.1f;
@@ -112,7 +118,7 @@ public class AIBase : BaseClass {
         foreach (GameObject obstacles in obst) {
 
             float currentDist = (obstacles.transform.position - reference.position).magnitude;
-            Debug.Log(currentDist);
+            //Debug.Log(currentDist);
             if (currentDist < range) {
                 if (Random.value > 0.9) {
                     toReturn = obstacles;
@@ -129,7 +135,7 @@ public class AIBase : BaseClass {
         foreach (GameObject obstacles in obst) {
 
             float currentDist = (reference.position - obstacles.transform.position).magnitude;
-            Debug.Log(currentDist);
+            //Debug.Log(currentDist);
             if (currentDist < range) {
                 if (Random.value > 0.9) {
                     toReturn = obstacles;

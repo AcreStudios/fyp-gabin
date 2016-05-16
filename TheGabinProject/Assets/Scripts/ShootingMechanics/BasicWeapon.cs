@@ -15,12 +15,14 @@ public class BasicWeapon : MonoBehaviour {
     public float weaponDamage;
     public GameObject explosionEffect;
     public BulletTypes bulletType;
+    public float range;
     int weaponIndex;
 
     float shootCooldown;
     GameObject currentTarget;
     RaycastHit hit;
     BaseClass target;
+    Vector3 storage;
 
 
     void Update() {
@@ -43,7 +45,9 @@ public class BasicWeapon : MonoBehaviour {
             if (shootCooldown <= Time.time) {
 
                 shootCooldown = Time.time + shootInterval;
-                if (Physics.Raycast(transform.position + new Vector3(0, transform.localScale.y / 4, 0), transform.TransformDirection(0, 0, 50) + WeaponSpray(sprayValue), out hit)) {
+                storage = WeaponSpray(sprayValue);
+                Debug.DrawRay(transform.position + new Vector3(0, transform.localScale.y / 4, 0), transform.TransformDirection(0, 0, range) + storage, Color.red, 2f);
+                if (Physics.Raycast(transform.position + new Vector3(0, transform.localScale.y / 4, 0), transform.TransformDirection(0, 0, range) + storage, out hit)) {
                     if (currentTarget != null) {
                         if (!currentTarget.GetComponent<BaseClass>()) {
                             currentTarget = null;
