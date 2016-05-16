@@ -13,6 +13,7 @@ public class DumbAI : AIBase {
     protected Vector3 targetPoint;
 
     void Start() {
+        StartCoroutine(Restoration(3));
         useNavMesh = true;
         obs = GameObject.FindGameObjectsWithTag("Obs");
         storage = null;

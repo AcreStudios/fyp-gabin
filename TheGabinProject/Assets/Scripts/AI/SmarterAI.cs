@@ -27,7 +27,6 @@ public class SmarterAI : AIBase {
         switch (currentBehaviour) {
             case States.Movement:
                 Movement(targetPoint, speed);
-                //if ((targetPoint - transform.position).sqrMagnitude < 5) {
                 if (agent.velocity == Vector3.zero) { 
                     currentBehaviour = States.Camping;
                 }
@@ -38,7 +37,6 @@ public class SmarterAI : AIBase {
                     currentBehaviour = States.Scouting;
                 }
                 if (Physics.Linecast(new Vector3(transform.position.x, transform.position.y, transform.position.z), target.transform.position, out hit)) {
-                    //Debug.Log(hit.transform.root);
                     if (hit.transform.root == target.transform) {
                         currentBehaviour = States.Scouting;
                     }

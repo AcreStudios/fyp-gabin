@@ -11,7 +11,6 @@ public class AIBase : BaseClass {
     protected float ammoCount;
     public float weaponDamage;
     public float sprayValue;
-    public Transform target;
     public float range;
 
     protected BaseClass sTarget;
@@ -19,6 +18,7 @@ public class AIBase : BaseClass {
 
     public GameObject explosionEffect;
 
+    protected Transform target;
     Transform head;
     Transform gun;
     Transform gunpoint;
@@ -33,6 +33,7 @@ public class AIBase : BaseClass {
             agent.enabled = false;
         }
 
+        target = GameObject.Find("Player").transform;
         head = transform.Find("Head");
         gun = transform.Find("Gun");
         gunpoint = gun.transform.Find("Gunpoint");

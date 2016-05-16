@@ -69,13 +69,15 @@ public class BasicWeapon : MonoBehaviour {
 
                         switch (bulletType) {
                             case BulletTypes.Frozen:
-                                target.Frozen();
+                                target.speed = 0.5f;
+                                StartCoroutine(target.Restoration(3));
                                 break;
                             case BulletTypes.Fire:
-                                target.Fire();
+                                StartCoroutine(target.Persistent(1,20));
                                 break;
                             case BulletTypes.Shock:
-                                target.Shock();
+                                target.speed = 0;
+                                StartCoroutine(target.Restoration(2));
                                 break;
                         }
                     }

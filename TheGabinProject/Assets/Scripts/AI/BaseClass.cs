@@ -6,10 +6,10 @@ public class BaseClass : MonoBehaviour {
     public float health;
     protected GameObject criticalPart;
     public float speed;
-    public float speedA;
     protected bool shotAt;
     public bool destrutibles;
-    public int ticks;
+
+    float originalSpeed;
 
     public float Health {
         get {
@@ -41,44 +41,17 @@ public class BaseClass : MonoBehaviour {
         Health -= weaponDamage;
     }
 
-    public void Frozen() {
-        if (!destrutibles) {
-            speed /= 2;
-            GetComponent<Renderer>().material.color = Color.blue;
-            StartCoroutine(Restoration(2));
-        }
-    }
-
-    public void Fire() {
-        if (!destrutibles) {
-            if (ticks >= 0) {
-                Health -= 1;
-                GetComponent<Renderer>().material.color = Color.red;
-                StartCoroutine(Persistent(0.1f));
-                ticks--;
-            } else {
-                StartCoroutine(Restoration(0));
-            }
-        }
-    }
-
-    public void Shock() {
-        if (!destrutibles) {
-            speed = 0;
-            GetComponent<Renderer>().material.color = Color.yellow;
-            StartCoroutine(Restoration(0.5f));
-        }
-    }
-
-    IEnumerator Restoration(float statusTime) {
+    public IEnumerator Restoration(float statusTime) {
         yield return new WaitForSeconds(statusTime);
-        speed = speedA;
-        GetComponent<Renderer>().material.color = Color.white;
-        ticks = 20;
+        speed = 1;
     }
 
-    IEnumerator Persistent(float persistentTime) {
-        yield return new WaitForSeconds(persistentTime);
-        Fire();
+    public IEnumerator Persistent(float healthReduction, float ticks) {
+        if (ticks > 0) {
+            yield return new WaitForSeconds(0.1f);
+            Health -= healthReduction;
+            ticks--;
+            StartCoroutine(Persistent(healthReduction, ticks));
+        }
     }
 }
