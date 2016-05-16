@@ -268,14 +268,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30dde244ee3d9624c8aab403030ebbfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 25
   speed: 1
-  speedA: 1
   destrutibles: 0
-  ticks: 0
   weaponDamage: 1
   sprayValue: 2
   range: 50
+  weaponSpeed: 0.5
+  reloadSpeed: 2
   explosionEffect: {fileID: 177928, guid: 00670fed9e70f9643bb811d4810386f1, type: 2}
 --- !u!195 &19587154
 NavMeshAgent:

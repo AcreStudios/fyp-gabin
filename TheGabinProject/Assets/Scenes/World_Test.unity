@@ -1655,9 +1655,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 11410262, guid: 7bf9e01ce33c4064cb56a999a5cf74fa, type: 2}
-      propertyPath: health
-      value: 25
+    - target: {fileID: 433630, guid: 7bf9e01ce33c4064cb56a999a5cf74fa, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.2857143
+      objectReference: {fileID: 0}
+    - target: {fileID: 433630, guid: 7bf9e01ce33c4064cb56a999a5cf74fa, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.2857143
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7bf9e01ce33c4064cb56a999a5cf74fa, type: 2}
@@ -6943,6 +6947,26 @@ Prefab:
     - target: {fileID: 11448942, guid: 0bcdb3f74745eec408cf373b04c2d53a, type: 2}
       propertyPath: target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 117492, guid: 0bcdb3f74745eec408cf373b04c2d53a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11448942, guid: 0bcdb3f74745eec408cf373b04c2d53a, type: 2}
+      propertyPath: weaponSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11448942, guid: 0bcdb3f74745eec408cf373b04c2d53a, type: 2}
+      propertyPath: reloadSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 483910, guid: 0bcdb3f74745eec408cf373b04c2d53a, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.2857143
+      objectReference: {fileID: 0}
+    - target: {fileID: 483910, guid: 0bcdb3f74745eec408cf373b04c2d53a, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.2857143
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bcdb3f74745eec408cf373b04c2d53a, type: 2}
