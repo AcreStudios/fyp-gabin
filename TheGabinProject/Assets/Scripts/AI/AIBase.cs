@@ -12,6 +12,8 @@ public class AIBase : BaseClass {
     public float weaponDamage;
     public float sprayValue;
     public float range;
+    public float weaponSpeed;
+    public float reloadSpeed;
 
     protected BaseClass sTarget;
     protected GameObject currentTarget;
@@ -96,12 +98,12 @@ public class AIBase : BaseClass {
                 gun.LookAt(target.Find("Model_Player"));
                 Shooting();
                 ammoCount--;
-                timer = Time.time + 0.1f;
+                timer = Time.time + weaponSpeed;
             }
             return true;
         } else {
             if (!reloading) {
-                timer = Time.time + 3.0f;
+                timer = Time.time + reloadSpeed;
                 reloading = true;
             }
             if (timer < Time.time) {
