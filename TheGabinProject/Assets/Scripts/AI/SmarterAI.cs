@@ -15,10 +15,13 @@ public class SmarterAI : AIBase {
     protected Vector3 targetPoint;
     public float crouchTime;
 
+    Vector3 scale;
+
     void Start() {
         useNavMesh = true;
         currentBehaviour = States.Scouting;
         obs = GameObject.FindGameObjectsWithTag("Obs");
+        scale = transform.localScale;
         base.Start();
     }
 
@@ -49,17 +52,17 @@ public class SmarterAI : AIBase {
 
                 if (cTimer < Time.time) {
                     if (Combat()) {
-                        transform.localScale = new Vector3(1, 2, 1);
+                        transform.localScale = scale;
 
                         if ((target.position - transform.position).magnitude > range) {
                             currentBehaviour = States.Scouting;
                             Debug.Log("Changing");
                         }
                     } else {
-                        transform.localScale = new Vector3(1, 1, 1);
+                        transform.localScale = new Vector3(scale.x, scale.y / 2, scale.z);
                     }
                 } else {
-                    transform.localScale = new Vector3(1, 1, 1);
+                    transform.localScale = new Vector3(scale.x, scale.y / 2, scale.z);
                 }
 
                 break;

@@ -3,8 +3,9 @@ using System.Collections;
 
 public class TP_Camera : MonoBehaviour 
 {
-	#region Declare variables
-	// Target to look at
+    #region Declare variables
+    // Target to look at
+    GameObject gun;
 	Transform targetLookAt;
 	public Transform normalLookAt;
 	public Transform aimingLookAt;
@@ -53,9 +54,10 @@ public class TP_Camera : MonoBehaviour
 		instance = this;
 
 		trans = GetComponent<Transform>();
-
+        gun = GameObject.Find("Player/Model_Player/Gun");
 		// Lock screen cursor
 		Cursor.lockState = cursorMode;
+        //gun.SetActive(false);
 	}
 
 	// Use this for initialization
@@ -78,7 +80,14 @@ public class TP_Camera : MonoBehaviour
 
 		// For shooting mode (camera zoom in)
 		shootingMode = Input.GetKey(shootingModeButton);
-		targetLookAt = (shootingMode) ? aimingLookAt : normalLookAt;
+
+        if (shootingMode) {
+            gun.GetComponent<BasicWeapon>().enabled = true;
+            targetLookAt = aimingLookAt;
+        } else {
+            gun.GetComponent<BasicWeapon>().enabled = false;
+            targetLookAt = normalLookAt;
+        }
 	}
 
 	void HandlePlayerInput()

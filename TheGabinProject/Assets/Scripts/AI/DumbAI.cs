@@ -12,11 +12,14 @@ public class DumbAI : AIBase {
     protected GameObject[] obs;
     protected Vector3 targetPoint;
 
+    Vector3 scale;
+
     void Start() {
         StartCoroutine(Restoration(3));
         useNavMesh = true;
         obs = GameObject.FindGameObjectsWithTag("Obs");
         storage = null;
+        scale = transform.localScale;
 
         base.Start();
     }
@@ -40,12 +43,12 @@ public class DumbAI : AIBase {
                 if (Combat()) {
                     if ((target.position - transform.position).magnitude > range) {
                         currentBehaviour = States.Movement;
-                        transform.localScale = new Vector3(transform.localScale.x, 2, transform.localScale.z);
+                        transform.localScale = scale;
                     } 
                     else {
                         agent.speed = 0;
                         storage = null;
-                        transform.localScale = new Vector3(transform.localScale.x, 2, transform.localScale.z);
+                        transform.localScale = scale;
                     }
                 } else {
                     
@@ -56,7 +59,7 @@ public class DumbAI : AIBase {
                         }
                     } else {
                         Movement(targetPoint, speed);
-                        transform.localScale = new Vector3(transform.localScale.x, 1, transform.localScale.z);
+                        transform.localScale = new Vector3(scale.x, scale.y/2, scale.z);
                     }
                     
                 }

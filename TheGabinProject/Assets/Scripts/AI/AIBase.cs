@@ -121,7 +121,6 @@ public class AIBase : BaseClass {
         foreach (GameObject obstacles in obst) {
 
             float currentDist = (obstacles.transform.position - reference.position).magnitude;
-            //Debug.Log(currentDist);
             if (currentDist < range) {
                 if (Random.value > 0.9) {
                     toReturn = obstacles;
