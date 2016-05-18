@@ -3,6 +3,10 @@ using System.Collections;
 
 public class BaseClass : MonoBehaviour {
 
+    public enum StatusEffects {
+        Fire, Frozen, Shock, Normal
+    }
+
     public float health;
     protected GameObject criticalPart;
     public float speed;
@@ -10,6 +14,7 @@ public class BaseClass : MonoBehaviour {
     public bool destrutibles;
 
     float originalSpeed;
+    public StatusEffects status;
 
     public float Health {
         get {
@@ -44,6 +49,7 @@ public class BaseClass : MonoBehaviour {
     public IEnumerator Restoration(float statusTime) {
         yield return new WaitForSeconds(statusTime);
         speed = 1;
+        status = StatusEffects.Normal;
     }
 
     public IEnumerator Persistent(float healthReduction, float ticks) {
@@ -52,6 +58,8 @@ public class BaseClass : MonoBehaviour {
             Health -= healthReduction;
             ticks--;
             StartCoroutine(Persistent(healthReduction, ticks));
+        } else {
+            status = StatusEffects.Normal;
         }
     }
 }
