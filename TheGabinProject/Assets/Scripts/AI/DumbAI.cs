@@ -4,8 +4,7 @@ using System.Collections;
 public class DumbAI : AIBase {
 
     public enum States {
-        Movement, Attacking,
-        Scouting
+        Movement, Attacking
     }
 
     protected States currentBehaviour;

@@ -4,7 +4,7 @@ using System.Collections;
 public class SmarterAI : AIBase {
 
     public enum States {
-        Movement, Reload, Shooting, Scouting, Camping
+        Movement, Scouting, Camping
     }
 
     float cTimer;
