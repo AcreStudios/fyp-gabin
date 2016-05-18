@@ -54,7 +54,6 @@ public class BasicWeapon : MonoBehaviour {
                         }
                     }
 
-                    Instantiate(explosionEffect, hit.point, Quaternion.identity);
                     if (currentTarget != hit.transform.gameObject) {
                         if (hit.transform.root.gameObject.GetComponent<BaseClass>()) {
                             currentTarget = hit.transform.gameObject;
@@ -64,7 +63,7 @@ public class BasicWeapon : MonoBehaviour {
                         }
                     }
                     if (currentTarget != null) {
-                        
+
                         target.DamageRecieved(weaponDamage, hit.transform.gameObject);
 
                         switch (bulletType) {
@@ -73,7 +72,7 @@ public class BasicWeapon : MonoBehaviour {
                                 StartCoroutine(target.Restoration(3));
                                 break;
                             case BulletTypes.Fire:
-                                StartCoroutine(target.Persistent(1,20));
+                                StartCoroutine(target.Persistent(1, 20));
                                 break;
                             case BulletTypes.Shock:
                                 target.speed = 0;
@@ -81,6 +80,9 @@ public class BasicWeapon : MonoBehaviour {
                                 break;
                         }
                     }
+                    GameObject explosion = (GameObject)Instantiate(explosionEffect, hit.point, Quaternion.identity);
+                    explosion.GetComponent<ExplosionEffectScript>().bulletState = bulletType.ToString();
+                    
                 }
             }
         }

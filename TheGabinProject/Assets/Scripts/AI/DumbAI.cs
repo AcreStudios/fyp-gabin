@@ -4,7 +4,8 @@ using System.Collections;
 public class DumbAI : AIBase {
 
     public enum States {
-        Movement, Attacking
+        Movement, Attacking,
+        Scouting
     }
 
     protected States currentBehaviour;
@@ -40,6 +41,7 @@ public class DumbAI : AIBase {
                 break;
 
             case States.Attacking:
+                
                 if (Combat()) {
                     if ((target.position - transform.position).magnitude > range) {
                         currentBehaviour = States.Movement;

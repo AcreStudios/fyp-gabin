@@ -28,6 +28,7 @@ public class AIBase : BaseClass {
     protected NavMeshAgent agent;
     Vector3 finalDestination;
     GameObject toReturn;
+    protected bool inLineofFire;
 
     public void Start() {
         agent = GetComponent<NavMeshAgent>();
@@ -62,6 +63,9 @@ public class AIBase : BaseClass {
         Debug.DrawRay(gunpoint.position, gun.TransformDirection(0, 0, range) + storage, Color.black, 2f);
 
         if (Physics.Raycast(gunpoint.position, gun.TransformDirection(0, 0, range) + storage, out hit)) {
+            if (hit.transform.gameObject.GetComponent<AIBase>()) {
+                hit.transform.gameObject.GetComponent<AIBase>().inLineofFire = true;
+            }
             if (currentTarget != null) {
                 if (!currentTarget.GetComponent<BaseClass>()) {
                     currentTarget = null;

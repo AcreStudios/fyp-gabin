@@ -4,22 +4,36 @@ using System.Collections;
 public class ExplosionEffectScript : MonoBehaviour {
 
     // Use this for initialization
-    Color black = Color.black;
+    Color color;
     Renderer current;
+    public string bulletState;
 
     void Start () {
         current = GetComponent<Renderer>();
-
-        current.material.color = Color.black;
+        switch (bulletState) {
+            case "Frozen":
+                color = Color.blue;
+                break;
+            case "Shock":
+                color = Color.yellow;
+                break;
+            case "Fire":
+                color = Color.red;
+                break;
+            case "Normal":
+                color = Color.black;
+                break;
+        }
+        
         GetComponent<Renderer>().material.shader = Shader.Find("Transparent/Diffuse");
     }
 	
 	// Update is called once per frame
 	void Update () {
-        black.a -= 0.01f;
-        current.material.color = black;
+        color.a -= 0.01f;
+        current.material.color = color;
 
-        if (black.a <= 0){
+        if (color.a <= 0){
             Destroy(gameObject);
         }
     }
