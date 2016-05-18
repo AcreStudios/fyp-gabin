@@ -14,7 +14,7 @@ public class AIBase : BaseClass {
     public float range;
     public float weaponSpeed;
     public float reloadSpeed;
-
+    protected GameObject storage;
     protected BaseClass sTarget;
     protected GameObject currentTarget;
 
@@ -26,9 +26,13 @@ public class AIBase : BaseClass {
     Transform gunpoint;
     protected bool useNavMesh;
     protected NavMeshAgent agent;
+    protected Vector3 scale;
     Vector3 finalDestination;
     GameObject toReturn;
-    protected bool inLineofFire;
+
+    bool inLineofFire;
+    GameObject allyObs;
+    
 
     public void Start() {
         agent = GetComponent<NavMeshAgent>();
@@ -41,12 +45,13 @@ public class AIBase : BaseClass {
         gun = transform.Find("Gun");
         gunpoint = gun.transform.Find("Gunpoint");
         criticalPart = head.gameObject;
+        allyObs = null;
     }
 
     public void Movement(Vector3 value, float speed) {
         if (useNavMesh) {
-            agent.speed = speed*20;
-            agent.acceleration = speed*20;
+            agent.speed = speed * 20;
+            agent.acceleration = speed * 20;
             agent.destination = value;
             agent.angularSpeed = 360;
 
@@ -57,13 +62,14 @@ public class AIBase : BaseClass {
 
     public void Shooting() {
 
-        Vector3 storage;
+        Vector3 spray;
 
-        storage = WeaponSpray(sprayValue);
-        Debug.DrawRay(gunpoint.position, gun.TransformDirection(0, 0, range) + storage, Color.black, 2f);
+        spray = WeaponSpray(sprayValue);
+        Debug.DrawRay(gunpoint.position, gun.TransformDirection(0, 0, range) + spray, Color.black, 2f);
 
-        if (Physics.Raycast(gunpoint.position, gun.TransformDirection(0, 0, range) + storage, out hit)) {
+        if (Physics.Raycast(gunpoint.position, gun.TransformDirection(0, 0, range) + spray, out hit)) {
             if (hit.transform.gameObject.GetComponent<AIBase>()) {
+                hit.transform.gameObject.GetComponent<AIBase>().allyObs = storage;
                 hit.transform.gameObject.GetComponent<AIBase>().inLineofFire = true;
             }
             if (currentTarget != null) {
@@ -93,28 +99,41 @@ public class AIBase : BaseClass {
         return new Vector3(Random.Range(-value, value), Random.Range(-value, value), 0);
     }
 
-    public bool Combat() {
-
-        if (ammoCount > 0) {
-            if (timer < Time.time) {
-                transform.LookAt(target.Find("Model_Player"));
-                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);
-                gun.LookAt(target.Find("Model_Player"));
-                Shooting();
-                ammoCount--;
-                timer = Time.time + weaponSpeed;
+    public string Combat() {
+        if (inLineofFire) {
+            //Debug.Log(gameObject+ "Caught in Crossfire!");
+            transform.localScale = new Vector3(scale.x, scale.y / 2, scale.z);
+            if (allyObs != null) {
+                Vector3 temp = FurthestPoint(allyObs);
+                Movement(temp, speed);
+                allyObs = null;
             }
-            return true;
+            if (agent.velocity == Vector3.zero) {
+                inLineofFire = false;
+            }
+            return "Dodging";
         } else {
-            if (!reloading) {
-                timer = Time.time + reloadSpeed;
-                reloading = true;
+            if (ammoCount > 0) {
+                if (timer < Time.time) {
+                    transform.LookAt(target.Find("Model_Player"));
+                    transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);
+                    gun.LookAt(target.Find("Model_Player"));
+                    Shooting();
+                    ammoCount--;
+                    timer = Time.time + weaponSpeed;
+                }
+                return "Shooting";
+            } else {
+                if (!reloading) {
+                    timer = Time.time + reloadSpeed;
+                    reloading = true;
+                }
+                if (timer < Time.time) {
+                    ammoCount = 20;
+                    reloading = false;
+                }
+                return "Reloading";
             }
-            if (timer < Time.time) {
-                ammoCount = 20;
-                reloading = false;
-            }
-            return false;
         }
     }
 

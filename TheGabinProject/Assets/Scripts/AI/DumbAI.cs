@@ -8,11 +8,10 @@ public class DumbAI : AIBase {
     }
 
     protected States currentBehaviour;
-    protected GameObject storage;
+
     protected GameObject[] obs;
     protected Vector3 targetPoint;
-
-    Vector3 scale;
+ 
 
     void Start() {
         StartCoroutine(Restoration(3));
@@ -41,7 +40,7 @@ public class DumbAI : AIBase {
 
             case States.Attacking:
                 
-                if (Combat()) {
+                if (Combat() == "Shooting") {
                     if ((target.position - transform.position).magnitude > range) {
                         currentBehaviour = States.Movement;
                         transform.localScale = scale;
@@ -51,7 +50,8 @@ public class DumbAI : AIBase {
                         storage = null;
                         transform.localScale = scale;
                     }
-                } else {
+                } 
+                if (Combat() == "Reloading"){
                     
                     if (storage == null) {
                         storage = RandomObstacle(obs, transform);

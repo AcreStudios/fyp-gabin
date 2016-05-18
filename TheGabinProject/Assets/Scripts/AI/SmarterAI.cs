@@ -10,12 +10,9 @@ public class SmarterAI : AIBase {
     float cTimer;
     public States currentBehaviour;
 
-    protected GameObject storage;
     protected GameObject[] obs;
     protected Vector3 targetPoint;
     public float crouchTime;
-
-    Vector3 scale;
 
     void Start() {
         useNavMesh = true;
@@ -51,14 +48,15 @@ public class SmarterAI : AIBase {
                 }
 
                 if (cTimer < Time.time) {
-                    if (Combat()) {
+                    if (Combat() == "Shooting") {
                         transform.localScale = scale;
 
                         if ((target.position - transform.position).magnitude > range) {
                             currentBehaviour = States.Scouting;
                             Debug.Log("Changing");
                         }
-                    } else {
+                    }
+                    if (Combat() == "Reloading") {
                         transform.localScale = new Vector3(scale.x, scale.y / 2, scale.z);
                     }
                 } else {
@@ -70,7 +68,6 @@ public class SmarterAI : AIBase {
             case States.Scouting:
                 storage = RandomObstacleFromPlayer(obs,target);
 
-                //instance = storage.GetComponent<BaseClass>();
                 if (storage != null) {
                     targetPoint = FurthestPoint(storage);
                     currentBehaviour = States.Movement;
