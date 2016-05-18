@@ -41,7 +41,7 @@ public class BasicWeapon : MonoBehaviour {
             bulletType = (BulletTypes)weaponIndex;
         }
        
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetKey(KeyCode.LeftControl)) {
             if (shootCooldown <= Time.time) {
 
                 shootCooldown = Time.time + shootInterval;
