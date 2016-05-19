@@ -15,6 +15,7 @@ public class BaseClass : MonoBehaviour {
 
     float originalSpeed;
     public StatusEffects status;
+    public EnemyDebugUI enemyUI;
 
     public float Health {
         get {
@@ -33,6 +34,7 @@ public class BaseClass : MonoBehaviour {
                 }
             } else {
                 health = value;
+                //enemyUI.UpdateHealth(value);
             }
         }
     }
@@ -50,6 +52,7 @@ public class BaseClass : MonoBehaviour {
         yield return new WaitForSeconds(statusTime);
         speed = 1;
         status = StatusEffects.Normal;
+        enemyUI.UpdateState("Normal");
     }
 
     public IEnumerator Persistent(float healthReduction, float ticks) {
@@ -60,6 +63,7 @@ public class BaseClass : MonoBehaviour {
             StartCoroutine(Persistent(healthReduction, ticks));
         } else {
             status = StatusEffects.Normal;
+            enemyUI.UpdateState("Normal");
         }
     }
 }

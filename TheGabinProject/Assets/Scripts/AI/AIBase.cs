@@ -46,6 +46,7 @@ public class AIBase : BaseClass {
         gunpoint = gun.transform.Find("Gunpoint");
         criticalPart = head.gameObject;
         allyObs = null;
+        enemyUI = transform.Find("Canvas_EnemyDebugUI").gameObject.GetComponent<EnemyDebugUI>();
     }
 
     public void Movement(Vector3 value, float speed) {
@@ -101,7 +102,7 @@ public class AIBase : BaseClass {
 
     public string Combat() {
         if (inLineofFire) {
-            //Debug.Log(gameObject+ "Caught in Crossfire!");
+            enemyUI.UpdateState("FriendlyFired!");
             transform.localScale = new Vector3(scale.x, scale.y / 2, scale.z);
             if (allyObs != null) {
                 Vector3 temp = FurthestPoint(allyObs);

@@ -11,7 +11,9 @@ public class DumbAI : AIBase {
 
     protected GameObject[] obs;
     protected Vector3 targetPoint;
- 
+    protected string state;
+  
+
 
     void Start() {
         StartCoroutine(Restoration(3));
@@ -19,11 +21,11 @@ public class DumbAI : AIBase {
         obs = GameObject.FindGameObjectsWithTag("Obs");
         storage = null;
         scale = transform.localScale;
-
         base.Start();
     }
 
     void Update() {
+        enemyUI.UpdateHealth(Health);
         switch (currentBehaviour) {
             case States.Movement:
 
@@ -32,9 +34,10 @@ public class DumbAI : AIBase {
                 }
 
                 Movement(target.position, speed);
-
+                enemyUI.UpdateState("Advancing to player");
                 if ((target.position - transform.position).magnitude < range) {
                     currentBehaviour = States.Attacking;
+                    
                 }
                 break;
 
@@ -43,9 +46,11 @@ public class DumbAI : AIBase {
                 if (Combat() == "Shooting") {
                     if ((target.position - transform.position).magnitude > range) {
                         currentBehaviour = States.Movement;
+                        
                         transform.localScale = scale;
                     } 
                     else {
+                        enemyUI.UpdateState("Firing");
                         agent.speed = 0;
                         storage = null;
                         transform.localScale = scale;
@@ -59,6 +64,7 @@ public class DumbAI : AIBase {
                             targetPoint = FurthestPoint(storage);
                         }
                     } else {
+                        enemyUI.UpdateState("Reloading,Running to hide");
                         Movement(targetPoint, speed);
                         transform.localScale = new Vector3(scale.x, scale.y/2, scale.z);
                     }

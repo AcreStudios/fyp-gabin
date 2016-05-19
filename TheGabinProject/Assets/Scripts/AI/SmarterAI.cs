@@ -23,10 +23,11 @@ public class SmarterAI : AIBase {
     }
 
     void Update() {
-
+        enemyUI.UpdateHealth(Health);
         switch (currentBehaviour) {
             case States.Movement:
                 Movement(targetPoint, speed);
+                enemyUI.UpdateState("Moving to obstacle");
                 if (agent.velocity == Vector3.zero) { 
                     currentBehaviour = States.Camping;
                 }
@@ -50,17 +51,18 @@ public class SmarterAI : AIBase {
                 if (cTimer < Time.time) {
                     if (Combat() == "Shooting") {
                         transform.localScale = scale;
-
+                        enemyUI.UpdateState("Firing");
                         if ((target.position - transform.position).magnitude > range) {
                             currentBehaviour = States.Scouting;
-                            Debug.Log("Changing");
                         }
                     }
                     if (Combat() == "Reloading") {
                         transform.localScale = new Vector3(scale.x, scale.y / 2, scale.z);
+                        enemyUI.UpdateState("Reloading, Crouching");
                     }
                 } else {
                     transform.localScale = new Vector3(scale.x, scale.y / 2, scale.z);
+                    enemyUI.UpdateState("Shot at, Crouching");
                 }
 
                 break;

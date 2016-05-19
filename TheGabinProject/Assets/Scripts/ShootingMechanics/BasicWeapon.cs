@@ -96,16 +96,16 @@ public class BasicWeapon : MonoBehaviour {
                             switch (bulletType) {
                                 case BulletTypes.Frozen:
                                     target.speed = 0.5f;
-                                    target.status = BaseClass.StatusEffects.Frozen;
+                                    target.enemyUI.UpdateState("Frozen");
                                     StartCoroutine(target.Restoration(3));
                                     break;
                                 case BulletTypes.Fire:
                                     StartCoroutine(target.Persistent(1, 20));
-                                    target.status = BaseClass.StatusEffects.Fire;
+                                    target.enemyUI.UpdateState("Fire");
                                     break;
                                 case BulletTypes.Shock:
                                     target.speed = 0;
-                                    target.status = BaseClass.StatusEffects.Shock;
+                                    target.enemyUI.UpdateState("Shock");
                                     StartCoroutine(target.Restoration(2));
                                     break;
                             }
