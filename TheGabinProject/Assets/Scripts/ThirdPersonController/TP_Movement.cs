@@ -12,6 +12,9 @@ public class TP_Movement : MonoBehaviour
 
 	public Vector3 moveVector { get; set; }
 	public float verticalVelocity { get; set; }
+
+	public GameObject playerModel;
+	bool crouching = false;
 	#endregion
 
 	#region Cache components
@@ -70,6 +73,27 @@ public class TP_Movement : MonoBehaviour
 	{
 		if(TP_Controller.characterController.isGrounded)
 			verticalVelocity = jumpSpeed;
+	}
+
+	public void Crouch()
+	{
+		if(TP_Controller.characterController.isGrounded)
+		{
+			if(!crouching)
+			{
+				playerModel.transform.localScale = new Vector3(1f, 0.5f, 1f);
+				playerModel.transform.localPosition = new Vector3(0f, -.4f, 0f);
+				TP_Controller.characterController.height = 1.6f;
+				crouching = true;
+			}
+			else
+			{
+				playerModel.transform.localScale = new Vector3(1f, 1f, 1f);
+				playerModel.transform.localPosition = new Vector3(0f, -1.6f, 0f);
+				TP_Controller.characterController.height = 3.2f;
+				crouching = false;
+			}
+		}
 	}
 
 	void SnapAlignCharacterWithCamera()

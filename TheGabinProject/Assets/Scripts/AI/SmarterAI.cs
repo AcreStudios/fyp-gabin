@@ -14,7 +14,7 @@ public class SmarterAI : AIBase {
     protected Vector3 targetPoint;
     public float crouchTime;
 
-    void Start() {
+    new void Start() {
         useNavMesh = true;
         currentBehaviour = States.Scouting;
         obs = GameObject.FindGameObjectsWithTag("Obs");
