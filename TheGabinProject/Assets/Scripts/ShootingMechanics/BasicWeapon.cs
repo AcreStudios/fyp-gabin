@@ -30,7 +30,7 @@ public class BasicWeapon : MonoBehaviour {
 
 
     void Update() {
-        Debug.Log(ammoCount);
+       // Debug.Log(ammoCount);
         if (Input.GetKeyDown("q")) {
             if (weaponIndex < 3) {
                 weaponIndex++;

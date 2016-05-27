@@ -3,19 +3,22 @@ using System.Collections;
 
 public class StartPause : MonoBehaviour {
 
+    public GameObject canvas;
     public Canvas initiatePauseMenu;
 
 	// Use this for initialization
 	void Start () {
-        initiatePauseMenu = initiatePauseMenu.GetComponent<Canvas>();
-
-        initiatePauseMenu.enabled = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	if((Input.GetKeyDown("P")) && (initiatePauseMenu.enabled = false)) {
+        if (!initiatePauseMenu.enabled) {
             initiatePauseMenu.enabled = true;
+        }
+        
+        if (Input.GetKeyDown("p")) {
+            Debug.Log("PauseDown");
+            canvas.SetActive(true);
             Time.timeScale = 0;
         }
 	}
