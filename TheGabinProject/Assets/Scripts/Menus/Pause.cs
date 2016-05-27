@@ -16,18 +16,21 @@ public class Pause : MonoBehaviour {
         restartBtn = restartBtn.GetComponent<Button>();
         exitBtn = exitBtn.GetComponent<Button>();
 
-        pauseMenu.enabled = false;
+        //pauseMenu.gameObject.SetActive(false);
 	}
 	
-	void Resume() {
+	public void Resume() {
         Time.timeScale = 1;
+        pauseMenu.gameObject.SetActive(false);
     }
 
-    void Restart() {
+    public void Restart() {
+        Time.timeScale = 1;
         Application.LoadLevel("Loading");
     }
 
-    void Exit() {
+    public void Exit() {
+        Time.timeScale = 1;
         Application.LoadLevel("Menu");
     }
 }
