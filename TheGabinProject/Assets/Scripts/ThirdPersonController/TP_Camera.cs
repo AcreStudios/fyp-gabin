@@ -54,7 +54,7 @@ public class TP_Camera : MonoBehaviour
 		instance = this;
 
 		trans = GetComponent<Transform>();
-        gun = GameObject.Find("Player/Model_Player/Capsule/Gun");
+        gun = GameObject.Find("Player/Model_Player/Gun");
 		// Lock screen cursor
 		Cursor.lockState = cursorMode;
         //gun.SetActive(false);

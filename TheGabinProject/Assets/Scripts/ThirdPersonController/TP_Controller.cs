@@ -55,17 +55,10 @@ public class TP_Controller : MonoBehaviour
 	{
 		if(Input.GetButton(jumpButton))
 			DoJump();
-		if(Input.GetKeyDown(KeyCode.LeftShift))
-			DoCrouch();
 	}
 
 	void DoJump()
 	{
 		TP_Movement.instance.Jump();
-	}
-
-	void DoCrouch()
-	{
-		TP_Movement.instance.Crouch();
 	}
 }

@@ -15,7 +15,7 @@ public class DumbAI : AIBase {
   
 
 
-    new void Start() {
+    void Start() {
         StartCoroutine(Restoration(3));
         useNavMesh = true;
         obs = GameObject.FindGameObjectsWithTag("Obs");
