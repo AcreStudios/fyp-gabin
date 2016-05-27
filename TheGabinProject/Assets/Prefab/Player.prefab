@@ -315,8 +315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049391134a3da774a88744ca53a4b01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprayValue: 5
-  shootInterval: 0.1
+  sprayValue: 0.5
+  shootInterval: 0.25
   weaponDamage: 5
   explosionEffect: {fileID: 177928, guid: 00670fed9e70f9643bb811d4810386f1, type: 2}
   bulletType: 3
@@ -332,8 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b515445d0f6e744841a87d4b121113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAxis: Horizontal
-  verticalAxis: Vertical
+  horizontalAxis: PlayerH
+  verticalAxis: PlayerV
   jumpButton: Jump
 --- !u!143 &14335694
 CharacterController:
