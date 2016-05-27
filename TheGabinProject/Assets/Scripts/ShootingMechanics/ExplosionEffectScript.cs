@@ -23,6 +23,9 @@ public class ExplosionEffectScript : MonoBehaviour {
             case "Normal":
                 color = Color.black;
                 break;
+            default:
+                color = Color.grey;
+                break;
         }
         
         GetComponent<Renderer>().material.shader = Shader.Find("Transparent/Diffuse");

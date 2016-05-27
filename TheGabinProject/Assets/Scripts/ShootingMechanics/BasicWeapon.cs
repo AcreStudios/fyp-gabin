@@ -28,9 +28,32 @@ public class BasicWeapon : MonoBehaviour {
     float reloadTimer;
     bool reloadedYet;
 
+    public GameObject bulletFaceUI;
+
 
     void Update() {
-        Debug.Log(ammoCount);
+
+        // Show what bullet type it is currently
+        switch (bulletType)
+        {
+            case BulletTypes.Frozen:
+                bulletFaceUI.GetComponent<Renderer>().material.color = Color.blue;
+                break;
+            case BulletTypes.Fire:
+                bulletFaceUI.GetComponent<Renderer>().material.color = Color.red;
+                break;
+            case BulletTypes.Shock:
+                bulletFaceUI.GetComponent<Renderer>().material.color = Color.yellow;
+                break;
+            case BulletTypes.Normal:
+                bulletFaceUI.GetComponent<Renderer>().material.color = Color.black;
+                break;
+            default:
+                bulletFaceUI.GetComponent<Renderer>().material.color = Color.black;
+                break;
+        }
+
+        // Debug.Log(ammoCount);
         if (Input.GetKeyDown("q")) {
             if (weaponIndex < 3) {
                 weaponIndex++;
@@ -54,8 +77,8 @@ public class BasicWeapon : MonoBehaviour {
                 case BulletTypes.Frozen:
                 case BulletTypes.Fire:
                 case BulletTypes.Shock:
-                    if (ammoCount !=5)
-                    ammoCount = 0;
+                    if(ammoCount !=5)
+                        ammoCount = 0;
                     break;
                 case BulletTypes.Normal:
                     if (ammoCount != 20)
