@@ -81,13 +81,30 @@ public class TP_Camera : MonoBehaviour
 		// For shooting mode (camera zoom in)
 		shootingMode = Input.GetKey(shootingModeButton);
 
-        if (shootingMode) {
+        if (shootingMode)
+		{
             gun.GetComponent<BasicWeapon>().enabled = true;
-            targetLookAt = aimingLookAt;
-        } else {
+			gun.transform.GetChild(0).gameObject.SetActive(true);
+			targetLookAt = aimingLookAt;
+
+			RotateGun();
+		}
+		else
+		{
             gun.GetComponent<BasicWeapon>().enabled = false;
-            targetLookAt = normalLookAt;
+			gun.transform.GetChild(0).gameObject.SetActive(false);
+			targetLookAt = normalLookAt;
         }
+	}
+
+	void RotateGun()
+	{
+		if(Input.GetAxis("CameraV") > 0.1f || Input.GetAxis("CameraV") < -0.1f)
+		{
+			Quaternion r3 = gun.transform.localRotation;
+			r3.x = Camera.main.transform.rotation.x;
+			gun.transform.localRotation = r3;
+		}
 	}
 
 	void HandlePlayerInput()

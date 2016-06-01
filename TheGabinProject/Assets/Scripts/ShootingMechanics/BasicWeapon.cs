@@ -90,7 +90,7 @@ public class BasicWeapon : MonoBehaviour {
 
         if (ammoCount > 0) {
 
-            if (Input.GetKey(KeyCode.LeftControl)) {
+            if (Input.GetKey(KeyCode.X)) {
                 if (shootCooldown <= Time.time) {
 
                     shootCooldown = Time.time + shootInterval;
