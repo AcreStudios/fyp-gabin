@@ -19,6 +19,7 @@ public class AIBase : BaseClass {
     protected GameObject currentTarget;
 
     public GameObject explosionEffect;
+    public LineRenderer gunRay;
 
     protected Transform target;
     Transform head;
@@ -66,7 +67,10 @@ public class AIBase : BaseClass {
         Vector3 spray;
 
         spray = WeaponSpray(sprayValue);
-        Debug.DrawRay(gunpoint.position, gun.TransformDirection(0, 0, range) + spray, Color.black, 2f);
+        gunRay.SetPosition(0,gunpoint.position);
+
+   
+        gunRay.SetPosition(1, gunpoint.transform.TransformDirection(0, 0, range)+spray);
 
         if (Physics.Raycast(gunpoint.position, gun.TransformDirection(0, 0, range) + spray, out hit)) {
             if (hit.transform.gameObject.GetComponent<AIBase>()) {
