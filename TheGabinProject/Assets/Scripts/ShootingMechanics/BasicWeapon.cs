@@ -29,7 +29,8 @@ public class BasicWeapon : MonoBehaviour {
     bool reloadedYet;
 
     public GameObject bulletFaceUI;
-
+    public Transform gunpoint;
+    public LineRenderer gunRay;
 
     void Update() {
 
@@ -53,7 +54,6 @@ public class BasicWeapon : MonoBehaviour {
                 break;
         }
 
-        // Debug.Log(ammoCount);
         if (Input.GetKeyDown("q")) {
             if (weaponIndex < 3) {
                 weaponIndex++;
@@ -95,7 +95,8 @@ public class BasicWeapon : MonoBehaviour {
 
                     shootCooldown = Time.time + shootInterval;
                     storage = WeaponSpray(sprayValue);
-                    Debug.DrawRay(transform.position + new Vector3(0, transform.localScale.y / 4, 0), transform.TransformDirection(0, 0, range) + storage, Color.red, 2f);
+                    gunRay.SetPosition(0, gunpoint.position);
+                    gunRay.SetPosition(1, gunpoint.transform.TransformDirection(0, 0, range) + storage);
                     if (Physics.Raycast(transform.position + new Vector3(0, transform.localScale.y / 4, 0), transform.TransformDirection(0, 0, range) + storage, out hit)) {
                         ammoCount--;
                         if (currentTarget != null) {
